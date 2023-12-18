@@ -1,0 +1,28 @@
+.product_sort_info li i.custom-icon-top{
+    top:0px;
+}
+.widget-footer p{
+    padding-left: 15px;
+}
+.section-info {
+    padding: 50px 0 20px 0;
+    position: relative;
+}
+.section-about{
+    padding: 100px 0 0 0;
+
+}
+.info-about{
+    margin-top: 100px;
+}
+.cart-padding-bottom{
+    padding-bottom: 30px;
+}
+.custom-zoom{
+    padding-top:4px;
+    padding-left: 4px;
+}
+/* .post_img img {
+    width: 80px;
+    height: 90px;
+} */
