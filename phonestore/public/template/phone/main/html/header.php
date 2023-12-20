@@ -1,13 +1,4 @@
-<?php 
-    $arrPages = array("about", "login", "register");
-    $menu_phone = '';
-    if(!empty($this->categoryPhone)){
-        foreach ($this->categoryPhone as $key => $value){
-            $categoryname = $value['name'];
-            $menu_phone .= '<li><a class="dropdown-item nav-link nav_item" href="list-product.php">'.$categoryname.'</a></li>';
-        }
-    }
-?>
+
 <header class="header_wrap fixed-top header_with_topbar">
     <div class="bottom_header dark_skin main_menu_uppercase">
         <div class="container">
@@ -34,9 +25,7 @@
                                     <li class="mega-menu-col col-lg-3">
                                         <ul>
                                             <li class="dropdown-header">Các mẫu điện thoại</li>
-                                            <?php
-                                                echo $menu_phone;
-                                            ?>
+                                            <?php include_once BLOCK_PATH . 'categoryphone.php';?>
                                            
                                         </ul>
                                     </li>

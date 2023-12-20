@@ -1523,6 +1523,8 @@ button:focus {
 	position: static;
 }
 .navbar .navbar-nav li.dropdown-mega-menu .dropdown-menu {
+	margin-left: 60%;
+	width: 15%;
 	right: 0;
 	padding-left: 0;
 	padding-right: 0;

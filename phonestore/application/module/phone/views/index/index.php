@@ -13,7 +13,7 @@ foreach($this->specialPhone as $key => $value){
 	$description	= substr($value['description'], 0, 200);
     $sourcePicture 		= $value['picture'];
     $uploadFolder ='phone';
-
+    $link	= URL::createLink('phone', 'phone', 'detail', array('category_phone_id' => $value['category_phone_id'],'phone_id' => $value['id']), "$catNameURL/$phoneNameURL-$category_phone-$phoneID.html");
     $picture = '<img src="' . UPLOAD_URL . $uploadFolder . '/' . $sourcePicture . '" alt="' . $name . '">';
     $price = number_format($value['price'], 0, ",", ".");
  
@@ -33,7 +33,7 @@ foreach($this->specialPhone as $key => $value){
             </div>
         </div>
         <div class="product_info">
-            <h6 class="product_title"><a href="detail-product.php">'.$name.'</a></h6>
+            <h6 class="product_title"><a href="'.$link.'">'.$name.'</a></h6>
             <div class="product_price">
                 <span class="price">'.$price.'đ</span>
                 <del>1.200.000đ</del>
@@ -63,7 +63,7 @@ foreach($this->newPhone as $key => $value){
 	$description	= substr($value['description'], 0, 200);
     $sourcePicture 		= $value['picture'];
     $uploadFolder ='phone';
-
+    $link	= URL::createLink('phone', 'phone', 'detail', array('category_phone_id' => $value['category_phone_id'],'phone_id' => $value['id']), "$catNameURL/$phoneNameURL-$category_phone-$phoneID.html");
     $picture = '<img src="' . UPLOAD_URL . $uploadFolder . '/' . $sourcePicture . '" alt="' . $name . '">';
     $price = number_format($value['price'], 0, ",", ".");
  
@@ -83,7 +83,7 @@ foreach($this->newPhone as $key => $value){
             </div>
         </div>
         <div class="product_info">
-            <h6 class="product_title"><a href="detail-product.php">'.$name.'</a></h6>
+            <h6 class="product_title"><a href="'. $link.'">'.$name.'</a></h6>
             <div class="product_price">
                 <span class="price">'.$price.'đ</span>
                 <del>1.200.000đ</del>
@@ -115,7 +115,8 @@ foreach($this->specialPhone as $key => $value){
 	$description	= substr($value['description'], 0, 200);
     $sourcePicture 		= $value['picture'];
     $uploadFolder ='phone';
-
+    
+    $link	= URL::createLink('phone', 'phone', 'detail', array('category_phone_id' => $value['category_phone_id'],'phone_id' => $value['id']), "$catNameURL/$phoneNameURL-$catID-$phoneID.html");
     $picture = '<img src="' . UPLOAD_URL . $uploadFolder . '/' . $sourcePicture . '" alt="' . $name . '">';
     $price = number_format($value['price'], 0, ",", ".");
  
@@ -135,7 +136,7 @@ foreach($this->specialPhone as $key => $value){
             </div>
         </div>
         <div class="product_info">
-            <h6 class="product_title"><a href="detail-product.php">'.$name.'</a></h6>
+            <h6 class="product_title"><a href="'. $link.'">'.$name.'</a></h6>
             <div class="product_price">
                 <span class="price">'.$price.'</span>
                 <del>1.200.000đ</del>
