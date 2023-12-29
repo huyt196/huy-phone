@@ -16,17 +16,17 @@
                             <a class="nav-link nav_item <?php if($menu_active=="home") echo "active"; ?>" href="home.html">Trang chủ</a>
                         </li>
                         <li>
-                            <a class="nav-link nav_item <?php if($menu_active=="about") echo "active"; ?>" href="about.php">Giới thiệu</a>
+                            <a class="nav-link nav_item <?php if($menu_active=="about") echo "active"; ?>" href="about.html">Giới thiệu</a>
                         </li>
                         <li class="dropdown dropdown-mega-menu">
-                            <a class="dropdown-toggle nav-link <?php if($menu_active=="listproduct") echo "active"; ?>" href="#" data-toggle="dropdown">Bộ sưu tập</a>
+                            <a class="dropdown-toggle nav-link <?php if($menu_active=="listproduct") echo "active"; ?>" href="#" data-toggle="dropdown">Điện Thoại</a>
                             <div class="dropdown-menu">
                                 <ul class="mega-menu d-lg-flex">
                                     <li class="mega-menu-col col-lg-3">
                                         <ul>
                                             <li class="dropdown-header">Các mẫu điện thoại</li>
                                             <?php include_once BLOCK_PATH . 'categoryphone.php';?>
-                                           
+                                        
                                         </ul>
                                     </li>
                    
@@ -107,6 +107,9 @@
                         </li>
                         <li>
                             <a class="nav-link nav_item <?php if($menu_active=="listarticle"||$menu_active=="detail-article") echo "active"; ?>" href="blog.html">Blog</a>
+                        </li>
+                        <li>
+                            <a class="nav-link nav_item <?php if($menu_active=="about") echo "active"; ?>" href="faq.html">FAQ</a>
                         </li>
                         <li><a class="nav-link nav_item <?php if($menu_active=="contact") echo "active"; ?>" href="contact.html">Liên hệ</a></li>
                     </ul>

@@ -6,13 +6,15 @@
 
 
 <?php
+$paginationHTML = $this->pagination->showPagination(URL::createLink('phone', 'phone', 'list'), ['phone' => true]);
+
 	$xhtml = '';
 	if(!empty($this->Items)){
       
 	
 		foreach($this->Items as $key => $value){
 			$name	= $value['name'];
-		
+            $saleOff = number_format($value['sale_off']);
 			$phoneID		= $value['id'];
 			$catID			= $value['category_phone_id'];
 			$price 			= $value['price'];
@@ -43,7 +45,7 @@
 					<h6 class="product_title"><a href="'.$link.'">'.$name.'</a></h6>
 					<div class="product_price">
 						<span class="price">'.number_format($price).'đ</span>
-						<del>1.200.000đ</del>
+						<del>'.$saleOff.'đ</del>
 						<!-- <div class="on_sale">
 							<span>Tiết kiệm: 35%</span>
 						</div> -->

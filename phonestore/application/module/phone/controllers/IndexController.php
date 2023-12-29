@@ -19,7 +19,21 @@ class IndexController extends Controller{
 		$this->_view->specialPhone	= $this->_model->listItem($this->_arrParam, array('task' => 'phone-special'));
 		$this->_view->newPhone		= $this->_model->listItem($this->_arrParam, array('task' => 'phone-new'));
 		$this->_view->categoryPhone		= $this->_model->listItem($this->_arrParam, array('task' => 'category-list'));
+		$this->_view->menus = $this->_model->listItem($this->_arrParam, array('task' => 'category-phone', 'table' => 'menu'));
 	
+		$arrCategories = $this->_model->listItem($this->_arrParam, array('task' => 'category-phone', 'table' => 'categoryphone'));
+		$arrayMenus = [];
+		foreach ($this->_view->menus as $keyMenu => $valueMenu) {
+		
+			$arrayMenus[$valueMenu['id']] = ['id' => $valueMenu['id'], 'name' => $valueMenu['name']];
+		}
+		foreach ($arrCategories as $keyCategories => $valueCategories) {
+			if ($valueCategories['menu_id'] == $arrayMenus[$valueCategories['menu_id']]['id']) {
+			
+			$str =	$arrayMenus[$valueCategories['menu_id']]['categoryphone'][$valueCategories['id']] = ['id' => $valueCategories['id'], 'name' => $valueCategories['name']];
+		}
+		}
+		$this->_view->menus = $arrayMenus;
 		$this->_view->render('index/index', true, ['slider' => true, 'banner' => true, 'info' => true]);
 	}
 

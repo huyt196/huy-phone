@@ -1,3 +1,4 @@
+
 <!-- START HEADER -->
 <?php include_once TEMPLATE_PATH . 'phone/main/html/layout_header.php'; ?>
 <!-- END HEADER-->

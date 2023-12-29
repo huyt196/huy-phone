@@ -8,9 +8,11 @@
 						array('link' => URL::createLink('admin', 'categoryphone', 'index')		, 'name' => 'Category Phone manager'		, 'image' => 'icon-48-category'),
 						array('link' => URL::createLink('admin', 'group', 'index')		, 'name' => 'Group manager'		, 'image' => 'icon-48-group'),
 						array('link' => URL::createLink('admin', 'user', 'index')		, 'name' => 'User manager'		, 'image' => 'icon-48-user'),
-						array('link' => URL::createLink('admin', 'contact', 'index')		, 'name' => 'Contact manager'		, 'image' => 'icon-48-user'),
-						array('link' => URL::createLink('admin', 'faq', 'index')		, 'name' => 'Faq manager'		, 'image' => 'icon-48-article'),
-						array('link' => URL::createLink('admin', 'experience', 'index')		, 'name' => 'Experience manager'		, 'image' => 'icon-48-article'),
+						array('link' => URL::createLink('admin', 'contact', 'index')		, 'name' => 'Contact manager'		, 'image' => 'icon-48-contacts'),
+						array('link' => URL::createLink('admin', 'faq', 'index')		, 'name' => 'Faq manager'		, 'image' => 'icon-48-help_header'),
+						array('link' => URL::createLink('admin', 'menu', 'index')		, 'name' => 'Menu manager'		, 'image' => 'icon-48-article'),
+						array('link' => URL::createLink('admin', 'slider', 'index')		, 'name' => 'Slider manager'		, 'image' => 'icon-48-article'),
+						array('link' => URL::createLink('admin', 'experience', 'index')		, 'name' => 'Experience manager'		, 'image' => 'icon-48-inbox'),
 					);
 	foreach($arrMenu as $key => $value){
 		$image	= $imageURL .'/header/'.$value['image'].'.png';

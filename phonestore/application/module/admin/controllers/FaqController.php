@@ -14,7 +14,7 @@ class FaqController extends Controller{
 		$this->_view->_title 		= 'Faq Manager :: List';
 		$totalItems					= $this->_model->countItem($this->_arrParam, null);
 		
-		$configPagination = array('totalItemsPerPage'	=> 10, 'pageRange' => 3);
+		$configPagination = array('totalItemsPerPage'	=> 6, 'pageRange' => 2);
 		$this->setPagination($configPagination);
 		$this->_view->pagination	= new Pagination($totalItems, $this->_pagination);
 		

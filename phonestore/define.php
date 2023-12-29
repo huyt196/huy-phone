@@ -35,12 +35,14 @@
 	define ('TBL_USER'			, 'user');
 	define ('TBL_PRIVELEGE'		, 'privilege');
 	define ('TBL_CATEGORY'		, 'category');
-	define ('TBL_CATEGORYPHONE'		, 'category-phone');
+	define ('TBL_CATEGORYPHONE'		, 'categoryphone');
 	define ('TBL_BOOK'			, 'book');
+	define ('TBL_SLIDER'			, 'slider');
 	define ('TBL_PHONE'			, 'phone');
 	define ('TBL_CART'			, 'cart');
 	define ('TBL_CONTACT'			, 'contact');
 	define ('TBL_FAQ'			, 'faq');
+	define ('TBL_MENU'			, 'menu');
 	define ('TBL_EXPERIENCE'			, 'experience');
 	// ====================== CONFIG ===========================
 	define ('TIME_LOGIN'		, 3600);

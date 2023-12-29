@@ -6,6 +6,7 @@ $slider_home_list = '';
 if(!empty($this->specialPhone)){
 foreach($this->specialPhone as $key => $value){
     $name	= $value['name'];
+    $saleOff = number_format($value['sale_off']);
     $phoneID =$value['id'];
     $category_phone =   $value['category_phone_id'];
     $phoneNameURL	= URL::filterURL($name);
@@ -36,7 +37,7 @@ foreach($this->specialPhone as $key => $value){
             <h6 class="product_title"><a href="'.$link.'">'.$name.'</a></h6>
             <div class="product_price">
                 <span class="price">'.$price.'đ</span>
-                <del>1.200.000đ</del>
+                <del>'.$saleOff.'đ</del>
                 <!-- <div class="on_sale">
                     <span>Tiết kiệm: 35%</span>
                 </div> -->
@@ -57,6 +58,7 @@ if(!empty($this->newPhone)){
 foreach($this->newPhone as $key => $value){
     $name	= $value['name'];
     $phoneID =$value['id'];
+    $saleOff = number_format($value['sale_off']);
     $category_phone =   $value['category_phone_id'];
     $phoneNameURL	= URL::filterURL($name);
 	$catNameURL		= URL::filterURL($value['category_name']);
@@ -86,7 +88,7 @@ foreach($this->newPhone as $key => $value){
             <h6 class="product_title"><a href="'. $link.'">'.$name.'</a></h6>
             <div class="product_price">
                 <span class="price">'.$price.'đ</span>
-                <del>1.200.000đ</del>
+                <del>'.$saleOff.'đ</del>
                 <!-- <div class="on_sale">
                     <span>-35%</span>
                 </div> -->
@@ -108,6 +110,7 @@ $phone_special = '';
 if(!empty($this->specialPhone)){
 foreach($this->specialPhone as $key => $value){
     $name	= $value['name'];
+    $saleOff = number_format($value['sale_off']);
     $phoneID =$value['id'];
     $category_phone =   $value['category_phone_id'];
     $phoneNameURL	= URL::filterURL($name);
@@ -139,7 +142,7 @@ foreach($this->specialPhone as $key => $value){
             <h6 class="product_title"><a href="'. $link.'">'.$name.'</a></h6>
             <div class="product_price">
                 <span class="price">'.$price.'</span>
-                <del>1.200.000đ</del>
+                <del>'.$saleOff.'đ</del>
                 <!-- <div class="on_sale">
                     <span>-35%</span>
                 </div> -->

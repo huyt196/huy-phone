@@ -69,6 +69,9 @@ class CategoryPhoneModel extends Model{
 			}
 	
 			$query		= implode(" ", $query);
+			echo '<pre style="color:red">';
+			print_r($query);
+			echo '</pre>';
 			$result		= $this->fetchAll($query);
 			return $result;
 		}

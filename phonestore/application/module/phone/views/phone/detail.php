@@ -4,7 +4,7 @@
 	if(!empty($this->phoneRelate)){
 		foreach($this->phoneRelate as $key => $value){
 			$name	= $value['name'];
-	
+            $saleOff = number_format($value['sale_off']);
 			$phoneID			= $value['id'];
 			$catID			= $value['category_phone_id'];
 			$price = number_format($value['price']);
@@ -29,10 +29,10 @@
 					</div>
 				</div>
 				<div class="product_info">
-					<h6 class="product_title"><a href="detail-product.php">'.$name.'</a></h6>
+					<h6 class="product_title"><a href="'.$link.'">'.$name.'</a></h6>
 					<div class="product_price">
 						<span class="price">'.$price.'đ</span>
-						<del>1.200.000đ</del>
+						<del>'.$saleOff.'đ</del>
 						<!-- <div class="on_sale">
 							<span>35% Off</span>
 						</div> -->
@@ -63,21 +63,13 @@
 	if(file_exists($picturePath)==true){
 		$pictureFull	= UPLOAD_URL . 'phone' . DS . $phoneInfo['picture'];
 	}
-	
 	$description	= substr($phoneInfo['description'], 0, 400);
-	
 	$priceReal 		= 0;
-	if($phoneInfo['sale_off'] > 0){
-		$priceReal	= (100-$phoneInfo['sale_off'])*$phoneInfo['price']/100;
-		$price	 = ' <span class="">'.number_format($phoneInfo['price']).'</span>';
-		$price	.= ' <span class="">'.number_format($priceReal).'</span>';
-	}else{
-		$priceReal	= $phoneInfo['price'];
-		$price	= ' <span class="">'.number_format($priceReal).'</span>';
-	}
-	
+    $price = number_format($value['price']);
+    $saleOff = number_format($value['sale_off']);
 	$linkOrder			= URL::createLink('phone', 'user', 'order', array('phone_id' => $phoneInfo['id'], 'price' => $priceReal));
-	$linkRelatePhone	= URL::createLink('phone', 'phone', 'relate', array('phone_id' => $phoneInfo['id'], 'category_phone_id' => $phoneInfo['category_phone_id']));
+	
+    $linkRelatePhone	= URL::createLink('phone', 'phone', 'relate', array('phone_id' => $phoneInfo['id'], 'category_phone_id' => $phoneInfo['category_phone_id']));
 ?>
 
 
@@ -125,7 +117,7 @@
                                     <h4 class="product_title"><a href="#"><?php echo $name;?></a></h4>
                                     <div class="product_price">
                                         <span class="price"><?php echo $price;?></span>
-                                        <del>1.200.000đ</del>
+                                        <del><?php    echo $saleOff      ?></del>
                                         <!-- <div class="on_sale">
                                             <span>Tiết kiệm: 35%</span>
                                         </div> -->

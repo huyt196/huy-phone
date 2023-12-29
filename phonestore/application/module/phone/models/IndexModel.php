@@ -51,7 +51,7 @@ class IndexModel extends Model{
 
 	public function listItem($arrParam, $option = null){
 		if($option['task'] == 'phone-special'){
-			$query[]	= "SELECT `b`.`id`, `b`.`name`, `b`.`picture`, `b`.`description`,`b`.`price`, `b`.`category_phone_id`, `c`.`name` AS `category_name`";
+			$query[]	= "SELECT `b`.`id`, `b`.`name`,`b`.`sale_off`, `b`.`picture`, `b`.`description`,`b`.`price`, `b`.`category_phone_id`, `c`.`name` AS `category_name`";
 			$query[]	= "FROM `".TBL_PHONE."` AS `b`, `".TBL_CATEGORYPHONE."` AS `c`";
 			$query[]	= "WHERE `b`.`status`  = 1 AND `b`.`special` = 1 AND `c`.`id` = `b`.`category_phone_id`";
 			$query[]	= "ORDER BY `b`.`ordering` ASC";
@@ -62,7 +62,7 @@ class IndexModel extends Model{
 			return $result;
 		}
 		if($option['task'] == 'phone-new'){
-			$query[]	= "SELECT `b`.`id`, `b`.`name`, `b`.`picture`, `b`.`price`, `b`.`description`, `b`.`category_phone_id`, `c`.`name` AS `category_name`";
+			$query[]	= "SELECT `b`.`id`, `b`.`name`,`b`.`sale_off`, `b`.`picture`, `b`.`price`, `b`.`description`, `b`.`category_phone_id`, `c`.`name` AS `category_name`";
 			$query[]	= "FROM `".TBL_PHONE."` AS `b`, `".TBL_CATEGORYPHONE."` AS `c`";
 			$query[]	= "WHERE `b`.`status`  = 1 AND `b`.`special` = 1 AND `c`.`id` = `b`.`category_phone_id`";
 			$query[]	= "ORDER BY `id` DESC";
@@ -83,5 +83,29 @@ class IndexModel extends Model{
 		
 			return $result;
 		}
+		if ($option['task'] == 'category-phone') {
+			if (isset($option['table'])) {
+				$table = $option['table'];
+
+				if ($option['table'] == 'menu') {
+					$query[] = "SELECT `id`, `name`";
+				}
+				if ($option['table'] == 'categoryphone') {
+					$query[] = "SELECT `id`, `menu_id`, `name`";
+				}
+				$query[] = "FROM `$table`";
+				$query[] = "WHERE `status`  = 1";
+				$query[] = "ORDER BY `id` ASC";
+
+				$query = implode(" ", $query);
+			
+				$result = $this->fetchAll($query);
+			
+				return $result;
+			}
+
+		}
+
+
 	}
 }

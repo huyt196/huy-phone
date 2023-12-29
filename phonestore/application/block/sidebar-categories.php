@@ -1,20 +1,25 @@
 <?php
 
 	$model 	= new Model();
-	$query	="SELECT `id`, `name`, `picture` FROM `".TBL_CATEGORYPHONE."` WHERE `status`  = 1 ORDER BY `name` ASC";
+	$query	="SELECT `b`.`id`, `b`.`name`, COUNT(`w`.`name`)  AS `total`
+	FROM ".TBL_CATEGORYPHONE." AS `b` , ".TBL_PHONE." AS `w`
+	WHERE `b`.`id` = `w`.`category_phone_id`
+	GROUP BY `w`.`category_phone_id`";
 
 		$data	= $model->fetchAll($query);
+
 
 	$xhtml = '';
 
 	if(!empty($data)){
 		foreach($data as $key => $value){
 			$name	 		= $value['name'];
+			$total          = $value['total'];
 			$nameURL		= URL::filterURL($name);
 			$id				= $value['id'];
 			$link	 		= URL::createLink('phone', 'phone', 'list', array('category_phone_id' => $id), "$nameURL-$id.html");
 			$picture 		= Helper::createImage('category', '', $value['picture'], array('class' => 'thumb'));
-			$xhtml 	.= '        <li><a href="'.$link.'"><span class="categories_name">'.$name.'</span><span class="categories_num">(1)</span></a></li>';
+			$xhtml 	.= '        <li><a href="'.$link.'"><span class="categories_name">'.$name.'</span><span class="categories_num">('.$total.')</span></a></li>';
 		}
 	}
 	

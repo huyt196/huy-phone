@@ -7,6 +7,8 @@ RewriteRule ^.*$ - [NC,L]
 RewriteRule		index.html 			index.php?module=phone&controller=index&action=index
 RewriteRule		home.html 			index.php?module=phone&controller=index&action=index
 RewriteRule		blog.html 			index.php?module=phone&controller=article&action=list
+RewriteRule		about.html 			index.php?module=phone&controller=about&action=list
+RewriteRule		faq.html 			index.php?module=phone&controller=faqphone&action=list
 RewriteRule		contact.html 		index.php?module=phone&controller=contact&action=index
 RewriteRule		category.html 		index.php?module=default&controller=category&action=index
 RewriteRule		register.html 		index.php?module=default&controller=index&action=register
@@ -16,3 +18,5 @@ RewriteRule		my-account.html 	index.php?module=default&controller=user&action=in
 RewriteRule		history.html 		index.php?module=default&controller=user&action=history
 RewriteRule		([A-Za-z0-9_-]+)-([0-9]+)\.html 		index.php?module=phone&controller=phone&action=list&category_phone_id=$2
 RewriteRule		([A-Za-z0-9_-]+)/([A-Za-z0-9_-]+)-([0-9]+)-([0-9]+)\.html 		index.php?module=phone&controller=phone&action=detail&category_phone_id=$3&phone_id=$4
+
+

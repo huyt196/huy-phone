@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 18, 2023 lúc 06:59 PM
+-- Thời gian đã tạo: Th12 29, 2023 lúc 10:07 AM
 -- Phiên bản máy phục vụ: 10.4.11-MariaDB
 -- Phiên bản PHP: 7.2.31
 
@@ -86,10 +86,13 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`id`, `username`, `books`, `prices`, `quantities`, `names`, `pictures`, `status`, `date`) VALUES
+('AQnv7mB', 'admin', '[\"13\"]', '[\"33950\"]', '[\"1\"]', '[\"Functional Programming in Scala\"]', '[\"7kyub3oi.jpg\"]', 0, '2023-12-27 13:20:45'),
 ('ePfD6au', 'admin', '[\"13\",\"19\"]', '[\"33950\",\"51300\"]', '[\"1\",\"1\"]', '[\"Functional Programming in Scala\",\"PostgreSQL Server Programming\"]', '[\"7kyub3oi.jpg\",\"x3et42jv.jpg\"]', 0, '2013-12-18 11:20:51'),
 ('GoFw4UN', 'admin', '[\"13\",\"24\",\"16\",\"23\"]', '[\"33950\",\"31680\",\"35280\",\"34400\"]', '[\"2\",\"3\",\"3\",\"1\"]', '[\"Functional Programming in Scala\",\"Programming Logics\",\"Advanced Programming in the UNIX Environment, 3rd Edition\",\"Advanced Network Programming - Principles and Techniques\"]', '[\"7kyub3oi.jpg\",\"sbx52yne.jpg\",\"2yo48fgm.jpg\",\"vradhky9.jpg\"]', 0, '2013-12-25 06:41:06'),
 ('iKYZHlr', 'admin', '[\"13\",\"24\",\"16\"]', '[\"33950\",\"31680\",\"35280\"]', '[\"1\",\"2\",\"2\"]', '[\"Functional Programming in Scala\",\"Programming Logics\",\"Advanced Programming in the UNIX Environment, 3rd Edition\"]', '[\"7kyub3oi.jpg\",\"sbx52yne.jpg\",\"2yo48fgm.jpg\"]', 0, '2013-12-18 06:04:48'),
 ('pVRyqlQ', 'admin', '[\"13\",\"16\"]', '[\"33950\",\"35280\"]', '[\"1\",\"1\"]', '[\"Functional Programming in Scala\",\"Advanced Programming in the UNIX Environment, 3rd Edition\"]', '[\"7kyub3oi.jpg\",\"2yo48fgm.jpg\"]', 0, '2023-11-23 08:46:07'),
+('QlxcASP', 'admin', '[\"16\"]', '[\"35280\"]', '[\"1\"]', '[\"Advanced Programming in the UNIX Environment, 3rd Edition\"]', '[\"2yo48fgm.jpg\"]', 0, '2023-12-27 13:03:12'),
+('RAxfemG', 'admin', '[\"13\"]', '[\"33950\"]', '[\"1\"]', '[\"Functional Programming in Scala\"]', '[\"7kyub3oi.jpg\"]', 0, '2023-12-27 13:03:34'),
 ('tAi43sb', 'admin', '[\"13\"]', '[\"33950\"]', '[\"1\"]', '[\"Functional Programming in Scala\"]', '[\"7kyub3oi.jpg\"]', 0, '2023-11-23 08:45:43'),
 ('zdebsc3', 'admin', '[\"13\"]', '[\"33950\"]', '[\"1\"]', '[\"Functional Programming in Scala\"]', '[\"7kyub3oi.jpg\"]', 0, '2013-12-18 06:04:11');
 
@@ -129,10 +132,10 @@ INSERT INTO `category` (`id`, `name`, `picture`, `created`, `created_by`, `modif
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `category-phone`
+-- Cấu trúc bảng cho bảng `categoryphone`
 --
 
-CREATE TABLE `category-phone` (
+CREATE TABLE `categoryphone` (
   `id` int(50) NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `picture` text COLLATE utf8_unicode_ci NOT NULL,
@@ -141,16 +144,17 @@ CREATE TABLE `category-phone` (
   `modified` date NOT NULL,
   `modified_by` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `status` tinyint(10) NOT NULL,
-  `ordering` int(10) NOT NULL
+  `ordering` int(10) NOT NULL,
+  `menu_id` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `category-phone`
+-- Đang đổ dữ liệu cho bảng `categoryphone`
 --
 
-INSERT INTO `category-phone` (`id`, `name`, `picture`, `created`, `created_by`, `modified`, `modified_by`, `status`, `ordering`) VALUES
-(1, 'Iphone', 'iphone.png', '2023-12-08', 'admin', '2023-12-08', 'admin', 1, 3),
-(2, 'samsung', 'hqgm645s.jpg', '2023-12-08', 'admin', '2023-12-08', 'admin', 1, 2);
+INSERT INTO `categoryphone` (`id`, `name`, `picture`, `created`, `created_by`, `modified`, `modified_by`, `status`, `ordering`, `menu_id`) VALUES
+(1, 'Iphone', 'xun8mjy6.png', '2023-12-20', 'admin', '0000-00-00', '', 1, 1, 3),
+(2, 'samsung', 'f9whz15l.jpg', '2023-12-20', 'admin', '0000-00-00', '', 1, 2, 3);
 
 -- --------------------------------------------------------
 
@@ -239,7 +243,7 @@ INSERT INTO `faq` (`id`, `question`, `answer`, `created`, `created_by`, `modifie
 (22, 'Ứng dụng di động có hỗ trợ phương thức đăng nhập an toàn, bằng vân tay không?', 'Có! Bạn có thể đăng nhập nhanh chóng và an toàn bằng Touch ID trên thiết bị iOS hoặc sử dụng phương thức đăng nhập bằng vân tay trên thiết bị Android. Bạn có thể thiết lập Touch ID hoặc đăng nhập bằng vân tay bằng cách chọn Đăng nhập nhanh từ menu Cài đặt', '2023-12-13', 'admin', NULL, NULL, 1, 2),
 (23, 'Ứng dụng di động có hỗ trợ thông báo đẩy không?', 'Có! Chúng tôi sẽ gửi thông báo đẩy đến thiết bị di động của bạn để thông báo cho bạn về các khoản thanh toán đến từ khách hàng và thị trường, cũng như các khoản tiền rút về tài khoản ngân hàng của bạn. Và chúng tôi vẫn đang không ngừng làm việc để thêm nh', '2023-12-13', 'admin', NULL, NULL, 0, 2),
 (24, 'Nếu tôi muốn đăng nhập với tư cách người dùng khác, làm cách nào để tôi chuyển đổi tài khoản?', 'Để chuyển đổi tài khoản, trước tiên hãy đăng xuất (từ trang Cài đặt). Sau đó nhấn vào biểu tượng tùy chọn (ba dấu chấm) ở đầu màn hình đăng nhập và chọn Chuyển tài khoản. Đăng nhập lại với tên người dùng mong muốn.', '2023-12-13', 'admin', NULL, NULL, 0, 2),
-(25, 'Tôi có thể rút về tài khoản ngân hàng của mình từ ứng dụng di động không?', 'Hiện tại thao tác rút tiền về ngân hàng chưa thể thực hiện được trên ứng dụng. Chúng tôi đang nỗ lực để cung cấp chức năng bổ sung trong các phiên bản sắp tới.', '2023-12-13', 'admin', NULL, NULL, 1, 3);
+(25, 'Tôi có thể rút về tài khoản ngân hàng của mình từ ứng dụng di động không?', 'Hiện tại thao tác rút tiền về ngân hàng chưa thể thực hiện được trên ứng dụng. Chúng tôi đang nỗ lực để cung cấp chức năng bổ sung trong các phiên bản sắp tới.', '2023-12-13', 'admin', '2023-12-21', 'admin', 1, 3);
 
 -- --------------------------------------------------------
 
@@ -267,8 +271,38 @@ CREATE TABLE `group` (
 
 INSERT INTO `group` (`id`, `name`, `group_acp`, `created`, `created_by`, `modified`, `modified_by`, `status`, `ordering`, `privilege_id`, `picture`) VALUES
 (1, 'Admin', 1, '2013-11-11', 'admin', '2023-11-23', 'admin', 1, 5, '1,2,3,4,5,6,7,8,9,10', ''),
-(2, 'Manager', 1, '2013-11-07', 'admin', '2023-12-08', 'admin', 1, 4, '1,2,3,4,6,7,8,9,10', ''),
+(2, 'Manager', 1, '2013-11-07', 'admin', '2023-12-21', 'admin', 0, 4, '1,2,3,4,6,7,8,9,10', ''),
 (3, 'Member', 0, '2013-11-12', 'admin', '2023-11-23', 'admin', 1, 2, '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `menu`
+--
+
+CREATE TABLE `menu` (
+  `id` int(10) NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `status` tinyint(10) NOT NULL,
+  `created` date DEFAULT NULL,
+  `created_by` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `modified` date DEFAULT NULL,
+  `modified_by` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ordering` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `menu`
+--
+
+INSERT INTO `menu` (`id`, `name`, `status`, `created`, `created_by`, `modified`, `modified_by`, `ordering`) VALUES
+(1, 'Trang chủ', 1, '2023-12-21', 'admin', '2023-12-21', 'admin', 2),
+(2, 'Giới thiệu', 1, '2023-12-21', 'admin', '2023-12-21', 'admin', 1),
+(3, 'Bộ sưu tập', 1, '2023-12-21', 'admin', NULL, NULL, 1),
+(4, 'Phụ kiện', 1, '2023-12-21', 'admin', NULL, NULL, 1),
+(5, 'Blog', 1, '2023-12-21', 'admin', NULL, NULL, 1),
+(6, 'Faq', 1, '2023-12-21', 'admin', NULL, NULL, 1),
+(7, 'Liên Hệ', 1, '2023-12-21', 'admin', NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -300,17 +334,22 @@ CREATE TABLE `phone` (
 INSERT INTO `phone` (`id`, `name`, `description`, `price`, `special`, `sale_off`, `picture`, `created`, `created_by`, `modified`, `modified_by`, `status`, `ordering`, `category_phone_id`) VALUES
 (1, 'Iphone 15 Pro Max', 'iPhone 15 Pro Max là một chiếc điện thoại thông minh cao cấp được mong đợi nhất năm 2023. Với nhiều tính năng mới và cải tiến, iPhone 15 Pro Max chắc chắn sẽ là một lựa chọn tuyệt vời cho những người dùng đang tìm kiếm một chiếc điện thoại có hiệu năng mạ', '3300000', 1, 0, 'iphone15pm.jpg', '2023-12-08', 'admin', '2023-12-08', 'admin', 1, 1, 1),
 (2, 'Sam Sung S22 Utral', 'Samsung Galaxy S23 Ultra 5G 512GB là một sản phẩm công nghệ không còn xa lạ với những người yêu công nghệ. Máy vừa được giới thiệu với nhiều tính năng và công nghệ nổi bật, đánh dấu một bước tiến đột phá của Samsung trong năm 2023, nhằm tạo nên một thương', '220000', NULL, 0, '1ls7dymi.jpg', '2023-12-08', 'admin', '2023-12-10', 'admin', 1, 1, 2),
-(3, 'IPhone 12', 'Apple đã trang bị con chip mới nhất của hãng (tính đến 11/2020) cho iPhone 12 đó là A14 Bionic, được sản xuất trên tiến trình 5 nm với hiệu suất ổn định hơn so với chip A13 được trang bị trên phiên bản tiền nhiệm iPhone 11.', '170000', 1, 0, 'zmxk8fnp.jpg', '2023-12-08', 'admin', '2023-12-18', 'admin', 1, 1, 1),
-(4, 'Iphone13 Pro Max', 'Con chip Apple A15 Bionic siêu mạnh được sản xuất trên quy trình 5 nm giúp iPhone 13 đạt hiệu năng ấn tượng, với CPU nhanh hơn 50%, GPU nhanh hơn 30% so với các đối thủ trong cùng phân khúc.', '240000', NULL, 0, 'lf7any62.jpg', '2023-12-10', 'admin', '2023-12-10', 'admin', 1, 1, 1),
-(5, 'Iphone 14', 'Con chip Apple A15 Bionic siêu mạnh được sản xuất trên quy trình 5 nm giúp iPhone 14 đạt hiệu năng ấn tượng, với CPU nhanh hơn 50%, GPU nhanh hơn 30% so với các đối thủ trong cùng phân khúc.', '160000', 1, 0, 'o87nv5yf.jpg', '2023-12-10', 'admin', '2023-12-18', 'admin', 1, 1, 1),
-(6, 'Iphone12 Pro Max', 'Năm nay, công nghệ màn hình trên 12 Pro Max cũng được đổi mới và trang bị tốt hơn cùng kích thước lên đến 6.7 inch, lớn hơn so với điện thoại iPhone 12 thường. Với công nghệ màn hình OLED cho khả năng hiển thị hình ảnh lên đến 2778 x 1284 pixels. Bên cạnh', '230000', 1, 0, 'f42idzbr.jpg', '2023-12-10', 'admin', '2023-12-18', 'admin', 1, 1, 1),
-(7, 'Iphone 15', 'Với iPhone 15, bạn sẽ được tận hưởng những trải nghiệm cao cấp trên một thiết bị bền bỉ và thanh lịch. Sản phẩm gây ấn tượng với màn hình Dynamic Island, camera độ phân giải siêu cao cùng nhiều chế độ quay chụp xuất sắc. Nhờ cổng USB-C, trải nghiệm kết nố', '230000', 1, 0, 'auscf6gh.jpg', '2023-12-10', 'admin', '2023-12-18', 'admin', 1, 1, 1),
-(8, 'Điện thoại Samsung Galaxy A25', 'Giảm ngay 150.000đ khi mua kèm SIM số đẹp Vinaphone Happy - Ưu đãi 2GB Data/ngày - Miễn phí 1000 phút nội mạng.', '40000', 1, 0, '4dwz35no.jpg', '2023-12-10', 'admin', '2023-12-18', 'admin', 1, 1, 2),
-(9, 'Samsung Galaxy A04s ', 'Galaxy A04s ra mắt với màn hình 90Hz mượt mà nhất phân khúc cùng dung lượng pin khủng 5000mAh. Kết hợp với nhiều tính năng hấp dẫn, “hậu bối” nổi bật thuộc dòng điện thoại Galaxy A series này hứa hẹn sẽ thăng hạng trải nghiệm cho giới trẻ.', '23000', NULL, 0, 'tefgbmnw.png', '2023-12-10', 'admin', NULL, NULL, 1, 2, 2),
-(10, 'Điện thoại Samsung Galaxy A54 ', 'Điện thoại Galaxy A54 5G với màn hình Super AMOLED kích thước 6.4 inch và độ phân giải Full HD+ (1080 x 2340 pixels). Điều này giúp người dùng có trải nghiệm hình ảnh sống động, sắc nét.\r\n\r\nBên cạnh đó, màn hình của Galaxy A54 5G còn được trang bị tốc độ ', '87000', 1, 0, 'ony6aljf.jpg', '2023-12-10', 'admin', '2023-12-18', 'admin', 1, 2, 2),
-(11, 'Điện thoại Samsung Galaxy A34', 'Samsung Galaxy A34 5G đặc biệt ở chỗ sở hữu các phiên bản màu thời trang và trẻ trung. Bao gồm màu Đen, Xanh, Bạc điện thoại sẽ chắc chắn thu hút ánh nhìn của nhiều người. Đồng thời, máy cũng có viền bezel 2 cạnh được làm mỏng tối ưu, đem đến thiết kế đầy', '48000', 1, 0, 'capvdsj6.jpg', '2023-12-10', 'admin', '2023-12-18', 'admin', 1, 2, 2),
-(12, 'Điện thoại Samsung Galaxy A05', 'Samsung Galaxy A05 khoác lên mình vẻ ngoài vô cùng nổi bật với những đường nét bo cong nhẹ nhàng, tinh tế. Được trau chuốt kỹ lưỡng về mặt thiết kế cũng như rất chú trọng về độ bền của sản phẩm, chính vì vậy, toàn bộ khung viền của chiếc điện thoại thông ', '279000', 1, 0, 'qcosvewi.jpg', '2023-12-10', 'admin', '2023-12-18', 'admin', 1, 1, 2),
-(13, 'Điện thoại Samsung Galaxy S20 FE', 'Ngày nay, việc chụp ảnh, quay video và chia sẻ những “tác phẩm” của mình là cách tốt nhất để thể hiện cá tính riêng. Đó là lý do tại sao Galaxy S20 FE có camera selfie 32MP cải tiến và camera cấp chuyên nghiệp cho phép bạn chụp ngay những bức ảnh hoàn hảo', '160000', 1, 0, 'mpkha0rs.jpg', '2023-12-10', 'admin', '2023-12-18', 'admin', 0, 1, 2);
+(3, 'IPhone 12', 'Apple đã trang bị con chip mới nhất của hãng (tính đến 11/2020) cho iPhone 12 đó là A14 Bionic, được sản xuất trên tiến trình 5 nm với hiệu suất ổn định hơn so với chip A13 được trang bị trên phiên bản tiền nhiệm iPhone 11.', '12590000', 1, 13590000, 'zmxk8fnp.jpg', '2023-12-08', 'admin', '2023-12-29', 'admin', 1, 1, 1),
+(4, 'Iphone13 Pro Max', 'Con chip Apple A15 Bionic siêu mạnh được sản xuất trên quy trình 5 nm giúp iPhone 13 đạt hiệu năng ấn tượng, với CPU nhanh hơn 50%, GPU nhanh hơn 30% so với các đối thủ trong cùng phân khúc.', '22590000', NULL, 23590000, 'lf7any62.jpg', '2023-12-10', 'admin', '2023-12-29', 'admin', 1, 1, 1),
+(5, 'Iphone 14', 'Con chip Apple A15 Bionic siêu mạnh được sản xuất trên quy trình 5 nm giúp iPhone 14 đạt hiệu năng ấn tượng, với CPU nhanh hơn 50%, GPU nhanh hơn 30% so với các đối thủ trong cùng phân khúc.', '18590000', 1, 19590000, 'o87nv5yf.jpg', '2023-12-10', 'admin', '2023-12-29', 'admin', 1, 1, 1),
+(6, 'Iphone12 Pro Max', 'Năm nay, công nghệ màn hình trên 12 Pro Max cũng được đổi mới và trang bị tốt hơn cùng kích thước lên đến 6.7 inch, lớn hơn so với điện thoại iPhone 12 thường. Với công nghệ màn hình OLED cho khả năng hiển thị hình ảnh lên đến 2778 x 1284 pixels. Bên cạnh', '23590000', 1, 24590000, 'f42idzbr.jpg', '2023-12-10', 'admin', '2023-12-29', 'admin', 1, 1, 1),
+(7, 'Iphone 15', 'Với iPhone 15, bạn sẽ được tận hưởng những trải nghiệm cao cấp trên một thiết bị bền bỉ và thanh lịch. Sản phẩm gây ấn tượng với màn hình Dynamic Island, camera độ phân giải siêu cao cùng nhiều chế độ quay chụp xuất sắc. Nhờ cổng USB-C, trải nghiệm kết nố', '21590000', 1, 22590000, 'auscf6gh.jpg', '2023-12-10', 'admin', '2023-12-29', 'admin', 1, 1, 1),
+(8, 'Samsung Galaxy A25', 'Giảm ngay 150.000đ khi mua kèm SIM số đẹp Vinaphone Happy - Ưu đãi 2GB Data/ngày - Miễn phí 1000 phút nội mạng.', '6690000', 1, 7690000, '4dwz35no.jpg', '2023-12-10', 'admin', '2023-12-29', 'admin', 1, 1, 2),
+(9, 'Samsung Galaxy A04s ', 'Galaxy A04s ra mắt với màn hình 90Hz mượt mà nhất phân khúc cùng dung lượng pin khủng 5000mAh. Kết hợp với nhiều tính năng hấp dẫn, “hậu bối” nổi bật thuộc dòng điện thoại Galaxy A series này hứa hẹn sẽ thăng hạng trải nghiệm cho giới trẻ.', '2690000', NULL, 3690000, 'tefgbmnw.png', '2023-12-10', 'admin', '2023-12-29', 'admin', 1, 2, 2),
+(10, 'Samsung Galaxy A54 ', 'Điện thoại Galaxy A54 5G với màn hình Super AMOLED kích thước 6.4 inch và độ phân giải Full HD+ (1080 x 2340 pixels). Điều này giúp người dùng có trải nghiệm hình ảnh sống động, sắc nét.\r\n\r\nBên cạnh đó, màn hình của Galaxy A54 5G còn được trang bị tốc độ ', '9690000', 1, 11690000, 'ony6aljf.jpg', '2023-12-10', 'admin', '2023-12-29', 'admin', 1, 2, 2),
+(11, 'Samsung Galaxy A34', 'Samsung Galaxy A34 5G đặc biệt ở chỗ sở hữu các phiên bản màu thời trang và trẻ trung. Bao gồm màu Đen, Xanh, Bạc điện thoại sẽ chắc chắn thu hút ánh nhìn của nhiều người. Đồng thời, máy cũng có viền bezel 2 cạnh được làm mỏng tối ưu, đem đến thiết kế đầy', '6690000', 1, 7690000, 'capvdsj6.jpg', '2023-12-10', 'admin', '2023-12-29', 'admin', 1, 2, 2),
+(12, 'Samsung Galaxy A05', 'Samsung Galaxy A05 khoác lên mình vẻ ngoài vô cùng nổi bật với những đường nét bo cong nhẹ nhàng, tinh tế. Được trau chuốt kỹ lưỡng về mặt thiết kế cũng như rất chú trọng về độ bền của sản phẩm, chính vì vậy, toàn bộ khung viền của chiếc điện thoại thông ', '2690000', 1, 3690000, 'qcosvewi.jpg', '2023-12-10', 'admin', '2023-12-29', 'admin', 1, 1, 2),
+(13, 'Samsung Galaxy S20 FE', 'Ngày nay, việc chụp ảnh, quay video và chia sẻ những “tác phẩm” của mình là cách tốt nhất để thể hiện cá tính riêng. Đó là lý do tại sao Galaxy S20 FE có camera selfie 32MP cải tiến và camera cấp chuyên nghiệp cho phép bạn chụp ngay những bức ảnh hoàn hảo', '6790000', 1, 8790000, 'mpkha0rs.jpg', '2023-12-10', 'admin', '2023-12-29', 'admin', 1, 1, 2),
+(14, 'Samsung Galaxy A15', 'Vào dịp cuối năm 2023, Samsung tiếp tục mang đến cho người dùng mẫu điện thoại Samsung Galaxy A thế hệ mới, đây là phiên bản nâng cấp của Galaxy A14 với tên gọi Samsung Galaxy A15. Máy sở hữu phong cách thiết kế hiện đại, màn hình Super AMOLED sắc nét cùn', '5590000', 1, 6590000, 'de4f2vmj.png', '2023-12-29', 'admin', '2023-12-29', 'admin', 1, 2, 2),
+(15, ' Samsung Galaxy M54 5G', 'Phải công nhận một điều là các mẫu điện thoại Samsung Galaxy M đều mang trong mình một hiệu năng vượt trội và Galaxy M54 5G không phải là một ngoại lệ. Máy đã có sự nâng cấp so với người đàn anh của mình khi được trang bị con chip Exynos 1380 8 nhân đầy m', '10590000', 1, 0, '64dh2kqb.jpg', '2023-12-29', 'admin', '2023-12-29', 'admin', 1, 2, 2),
+(16, 'Samsung Galaxy A14', 'Samsung tiếp tục chứng tỏ sự nỗ lực của mình trong việc cải thiện dòng sản phẩm phân khúc cấp thấp trong năm 2023 bằng việc ra mắt mẫu smartphone Samsung Galaxy A14 4G. Với thiết kế độc đáo và hiện đại, sản phẩm này đáp ứng đầy đủ tiêu chí \"ngon - bổ - rẻ', '3990000', 1, 4990000, 'm59wkro4.jpg', '2023-12-29', 'admin', '2023-12-29', 'admin', 1, 2, 2),
+(17, 'Samsung Galaxy S21 FE', 'Samsung Galaxy S21 FE 5G (6GB/128GB) được Samsung ra mắt với dáng dấp thời thượng, cấu hình khỏe, chụp ảnh đẹp với bộ 3 camera chất lượng, thời lượng pin đủ dùng hằng ngày và còn gì nữa? Mời bạn khám phá qua nội dung sau ngay.', '9590000', 1, 0, '5fdyl3wi.jpg', '2023-12-29', 'admin', '2023-12-29', 'admin', 1, 3, 2),
+(18, 'Samsung Galaxy Z Flip5 5G', 'Samsung Galaxy Z Flip5 tiếp tục theo đuổi phong cách gập độc đáo đã trở thành thương hiệu của dòng sản phẩm \"Z Flip\". Với thiết kế nhỏ gọn và hình dáng hộp phấn khi gập lại, chiếc điện thoại này rất dễ dàng cất đi trong túi áo hoặc túi xách.\r\n\r\n', '19590000', 1, 0, '10pe4z8g.jpg', '2023-12-29', 'admin', '2023-12-29', 'admin', 1, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -341,6 +380,60 @@ INSERT INTO `privilege` (`id`, `name`, `module`, `controller`, `action`) VALUES
 (8, 'Đăng nhập Admin Control Panel', 'admin', 'index', 'login'),
 (9, 'Đăng xuất Admin Control Panel', 'admin', 'index', 'logout'),
 (10, 'Cập nhật thông tin tài khoản quản trị', 'admin', 'index', 'profile');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `rss`
+--
+
+CREATE TABLE `rss` (
+  `id` int(11) NOT NULL,
+  `link` varchar(255) NOT NULL,
+  `status` varchar(255) DEFAULT '0',
+  `ordering` int(11) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Đang đổ dữ liệu cho bảng `rss`
+--
+
+INSERT INTO `rss` (`id`, `link`, `status`, `ordering`) VALUES
+(1, 'https://vnexpress.net/rss/tin-moi-nhat.rss', '0', 6),
+(3, 'https://vnexpress.net/rss/the-thao.rss', '0', 9),
+(16, 'https://vnexpress.net/rss/giai-tri.rss', '0', 12),
+(18, 'https://vnexpress.net/rss/phap-luat.rss', '0', 10),
+(20, 'https://vnexpress.net/rss/oto-xe-may.rss', '0', 35),
+(21, 'https://vnexpress.net/rss/gia-dinh.rss', '1', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `slider`
+--
+
+CREATE TABLE `slider` (
+  `id` int(10) NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `description` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `picture` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created` date DEFAULT NULL,
+  `created_by` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `modified` date DEFAULT NULL,
+  `modified_by` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ordering` int(10) DEFAULT NULL,
+  `status` tinyint(10) DEFAULT NULL,
+  `category_phone_id` int(10) NOT NULL,
+  `class` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `slider`
+--
+
+INSERT INTO `slider` (`id`, `name`, `description`, `picture`, `created`, `created_by`, `modified`, `modified_by`, `ordering`, `status`, `category_phone_id`, `class`) VALUES
+(1, 'Giảm 50% chỉ trong hôm nay!', 'Sỡ Hữu Iphone Mới', '4ak8xzvw.jpg', '2023-12-24', 'admin', '2023-12-24', 'admin', 1, 1, 1, 'col-lg-7 col-9'),
+(2, 'Giảm 50% mọi sản phẩm', 'Năng Động Cùng Sam Sung', 'simd7ej0.jpg', '2023-12-24', 'admin', NULL, NULL, 1, 1, 2, 'col-lg-6');
 
 -- --------------------------------------------------------
 
@@ -404,9 +497,9 @@ ALTER TABLE `category`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `category-phone`
+-- Chỉ mục cho bảng `categoryphone`
 --
-ALTER TABLE `category-phone`
+ALTER TABLE `categoryphone`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -428,6 +521,12 @@ ALTER TABLE `group`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Chỉ mục cho bảng `menu`
+--
+ALTER TABLE `menu`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Chỉ mục cho bảng `phone`
 --
 ALTER TABLE `phone`
@@ -437,6 +536,18 @@ ALTER TABLE `phone`
 -- Chỉ mục cho bảng `privilege`
 --
 ALTER TABLE `privilege`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `rss`
+--
+ALTER TABLE `rss`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `slider`
+--
+ALTER TABLE `slider`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -462,10 +573,10 @@ ALTER TABLE `category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT cho bảng `category-phone`
+-- AUTO_INCREMENT cho bảng `categoryphone`
 --
-ALTER TABLE `category-phone`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `categoryphone`
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `contact`
@@ -486,16 +597,34 @@ ALTER TABLE `group`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT cho bảng `menu`
+--
+ALTER TABLE `menu`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT cho bảng `phone`
 --
 ALTER TABLE `phone`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT cho bảng `privilege`
 --
 ALTER TABLE `privilege`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT cho bảng `rss`
+--
+ALTER TABLE `rss`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
+-- AUTO_INCREMENT cho bảng `slider`
+--
+ALTER TABLE `slider`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `user`

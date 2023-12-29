@@ -14,6 +14,8 @@ class ArticleController extends Controller{
 		$this->_view->_title 		= 'Blog';
 		$this->_view->categoryName 	= $this->_model->infoItem($this->_arrParam, array('task' => 'get-cat-name'));
 		$this->_view->Items	 		= $this->_model->listItem($this->_arrParam, array('task' => 'books-in-cat'));
+		$this->_view->name_page = "Blog";
+		$this->_view->menu_active = "listarticle";
 		$this->_view->render('article/index', true, ['slider' => false, 'banner' => false, 'info' => false, 'breadcum' => true]);
 	}
 	
