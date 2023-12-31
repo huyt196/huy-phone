@@ -7,31 +7,31 @@ require_once 'libs/Validate.class.php';
 $result = [];
 $errors = '';
 
-if (!empty($_POST)) {
-    $source = $_POST;
-    $validate = new Validate($source);
+// if (!empty($_POST)) {
+//     $source = $_POST;
+//     $validate = new Validate($source);
 
-    // Rule
-    $validate->addRule('name', 'string', 5, 100)
-        ->addRule('email', 'email')
-        ->addRule('title', 'string', 5, 100)
-        ->addRule('phone', 'string', 5, 100)
-        ->addRule('message', 'string', 5, 100);
+//     // Rule
+//     $validate->addRule('name', 'string', 5, 100)
+//         ->addRule('email', 'email')
+//         ->addRule('title', 'string', 5, 100)
+//         ->addRule('phone', 'string', 5, 100)
+//         ->addRule('message', 'string', 5, 100);
 
-    // Run
-    $validate->run();
-    $errors = $validate->showErrors();
-    $result = $validate->getResult();
+//     // Run
+//     $validate->run();
+//     $errors = $validate->showErrors();
+//     $result = $validate->getResult();
     
-    if (empty($errors)) {
+//     if (empty($errors)) {
       
-        $configEmail = file_get_contents('data/configEmail.json');
-        $configEmail = json_decode($configEmail, true);
-        $mail = new Mail($configEmail);
-        $mail->sendMail($result, ['task' => 'send-mail-to-user']);
-        $mail->sendMail($result, ['task' => 'send-mail-to-admin']);
-    }
-}
+//         $configEmail = file_get_contents('data/configEmail.json');
+//         $configEmail = json_decode($configEmail, true);
+//         $mail = new Mail($configEmail);
+//         $mail->sendMail($result, ['task' => 'send-mail-to-user']);
+//         $mail->sendMail($result, ['task' => 'send-mail-to-admin']);
+//     }
+// }
 
 ?>
 

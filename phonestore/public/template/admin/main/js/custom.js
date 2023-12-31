@@ -39,6 +39,7 @@ function sortList(column, order){
 
 function changePage(page){
 	$('input[name=filter_page]').val(page);
+	console.log(page);
 	$('#adminForm').submit();
 }
 

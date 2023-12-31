@@ -1,4 +1,12 @@
 <?php
+Session::init();
+if (!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = array();
+}
+$count = 0;
+foreach ($_SESSION['cart'] as $item) {
+    $count += $item['num'];
+}
 //    require_once '../../share/zendvn.php';
 //    $email              = $config['email'];
 //    $address            = $config['address'];

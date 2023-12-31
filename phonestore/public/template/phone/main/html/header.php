@@ -127,19 +127,20 @@
                         <div class="search_overlay"></div>
                     </li>
                     <li class="dropdown cart_dropdown">
-                        <a class="nav-link cart_trigger" href="#" data-toggle="dropdown"><i class="linearicons-cart"></i><span class="cart_count">2</span></a>
+                        <a class="nav-link cart_trigger" href="#" data-toggle="dropdown"><i
+                                class="linearicons-cart"></i><span class="cart_count">
+                                <?=$count?>
+                            </span></a>
                         <div class="cart_box dropdown-menu dropdown-menu-right">
                             <ul class="cart_list">
                                 <?php
-                                    for($i=0;$i<2;$i++){
-                                        include '../element/item-cart-box.php';
-                                    }
-                                ?>
+include MODULE_PATH . "phone/views/cart/list.php";
+?>
                             </ul>
-                            <div class="cart_footer">
-                                <p class="cart_total"><strong>Thành tiền:</strong> <span class="cart_price"> <span class="price_symbole">$</span></span>1.400.000đ</p>
-                                <p class="cart_buttons"><a href="cart.php" class="btn btn-fill-line rounded-0 view-cart">Giỏ hàng</a><a href="checkout.php" class="btn btn-fill-out rounded-0 checkout">Đặt hàng</a></p>
-                            </div>
+
+                            <?php
+include MODULE_PATH . "phone/views/cart/cart-footer.php";
+?>
                         </div>
                     </li>
                 </ul>

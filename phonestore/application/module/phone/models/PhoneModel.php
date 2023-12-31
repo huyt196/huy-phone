@@ -1,15 +1,17 @@
 <?php
-class PhoneModel extends Model{
-	
-	private $_columns = array('id', 'name', 'description', 'price', 'sale_off', 'picture','created', 'created_by', 'modified', 'modified_by', 'status', 'ordering', 'category_id');
+class PhoneModel extends Model
+{
+
+	private $_columns = array('id', 'name', 'description', 'price', 'sale_off', 'picture', 'created', 'created_by', 'modified', 'modified_by', 'status', 'ordering', 'category_id');
 	private $_userInfo;
-	
-	public function __construct(){
+
+	public function __construct()
+	{
 		parent::__construct();
-			
+
 		$this->setTable(TBL_PHONE);
-		$userObj 			= Session::get('user');
-		$this->_userInfo 	= $userObj['info'];
+		$userObj = Session::get('user');
+		$this->_userInfo = $userObj['info'];
 	}
 
 	public function countItem($arrParam, $option = null)
@@ -50,58 +52,84 @@ class PhoneModel extends Model{
 		$result = $this->fetchRow($query);
 		return $result['total'];
 	}
-	
-	public function listItem($arrParam, $option = null){
-		if($option['task'] == 'phone-in-cat'){
-			$catID		= $arrParam['category_phone_id'];
-			$query[]	= "SELECT `id`, `name`, `picture`, `description`, `category_phone_id`,`price` ,`sale_off`";
-			$query[]	= "FROM `$this->table`";
-			$query[]	= "WHERE `status`  = 1 AND `category_phone_id` = '$catID'";
+
+	public function listItem($arrParam, $option = null)
+	{
+		if ($option['task'] == 'phone-in-cat') {
+			$catID = $arrParam['category_phone_id'];
+			$query[] = "SELECT `id`, `name`, `picture`, `description`, `category_phone_id`,`price` ,`sale_off`";
+			$query[] = "FROM `$this->table`";
+			$query[] = "WHERE `status`  = 1 AND `category_phone_id` = '$catID'";
+
+			// FILTER : RANGE PRICE
+			if (!empty($arrParam['price_first']) && !empty($arrParam['price_second'])) {
+				$query[] = "AND `sale_off` >= " . $arrParam['price_first'];
+				$query[] = "AND `sale_off` <= " . $arrParam['price_second'];
+			}
+			
 			//$query[]	= "ORDER BY `name` ASC";
-	
-				// PAGINATION
-				$pagination = $arrParam['pagination'];
-				$totalItemsPerPage = $pagination['totalItemsPerPage'];
-				if ($totalItemsPerPage > 0) {
-					$position = ($pagination['currentPage'] - 1) * $totalItemsPerPage;
-					$query[] = "LIMIT $position, $totalItemsPerPage";
+			if (isset($arrParam['filter_order'])) {
+				switch ($arrParam['filter_order']) {
+					case 'date':
+						$query[] = "ORDER BY  `id` DESC";
+						break;
+
+					case 'price':
+						$query[] = "ORDER BY  `sale_off` ASC";
+						break;
+
+					case 'price-desc':
+						$query[] = "ORDER BY  `sale_off` DESC";
+						break;
 				}
-			$query		= implode(" ", $query);
+
+			}
+
+			
+
+			// PAGINATION
+			$pagination = $arrParam['pagination'];
+			$totalItemsPerPage = $pagination['totalItemsPerPage'];
+			if ($totalItemsPerPage > 0) {
+				$position = ($pagination['currentPage'] - 1) * $totalItemsPerPage;
+				$query[] = "LIMIT $position, $totalItemsPerPage";
+			}
+			$query = implode(" ", $query);
 			echo '<pre style="color:red">';
 			print_r($query);
 			echo '</pre>';
-			$result		= $this->fetchAll($query);
+			$result = $this->fetchAll($query);
 			return $result;
 		}
-		
-		if($option['task'] == 'phone-relate'){
-			$phoneID		= $arrParam['phone_id'];
-			$catID		= $arrParam['category_phone_id'];
-			
-			$query[]	= "SELECT `b`.`id`, `b`.`name`, `b`.`picture`,`b`.`price`, `b`.`sale_off`,  `b`.`category_phone_id`, `c`.`name` AS `category_name`";
-			$query[]	= "FROM `".TBL_PHONE."` AS `b`, `".TBL_CATEGORYPHONE."` AS `c`";
-			$query[]	= "WHERE `b`.`status`  = 1  AND `c`.`id` = `b`.`category_phone_id` AND `b`.`id` <> '$phoneID' AND `c`.`id`  = '$catID'";
-			$query[]	= "ORDER BY `b`.`ordering` ASC";
-		
-			$query		= implode(" ", $query);
-			$result		= $this->fetchAll($query);
+
+		if ($option['task'] == 'phone-relate') {
+			$phoneID = $arrParam['phone_id'];
+			$catID = $arrParam['category_phone_id'];
+
+			$query[] = "SELECT `b`.`id`, `b`.`name`, `b`.`picture`,`b`.`price`, `b`.`sale_off`,  `b`.`category_phone_id`, `c`.`name` AS `category_name`";
+			$query[] = "FROM `" . TBL_PHONE . "` AS `b`, `" . TBL_CATEGORYPHONE . "` AS `c`";
+			$query[] = "WHERE `b`.`status`  = 1  AND `c`.`id` = `b`.`category_phone_id` AND `b`.`id` <> '$phoneID' AND `c`.`id`  = '$catID'";
+			$query[] = "ORDER BY `b`.`ordering` ASC";
+
+			$query = implode(" ", $query);
+			$result = $this->fetchAll($query);
 			return $result;
 		}
 	}
-	
-	public function infoItem($arrParam, $option = null){
-		if($option['task'] == 'get-cat-name'){
-			$query	= "SELECT `name` FROM `".TBL_CATEGORYPHONE."` WHERE `id` = '" . $arrParam['category_phone_id'] . "'";
-			$result	= $this->fetchRow($query);
+
+	public function infoItem($arrParam, $option = null)
+	{
+		if ($option['task'] == 'get-cat-name') {
+			$query = "SELECT `name` FROM `" . TBL_CATEGORYPHONE . "` WHERE `id` = '" . $arrParam['category_phone_id'] . "'";
+			$result = $this->fetchRow($query);
 			return $result['name'];
 		}
-		
-		if($option['task'] == 'phone-info'){
-			
-			$query	= "SELECT `b`.`id`, `b`.`name`, `c`.`name` AS `category_name`, `b`.`price`, `b`.`sale_off`, `b`.`picture`, `b`.`description`, `b`.`category_phone_id` FROM `".TBL_PHONE."` AS `b`, `".TBL_CATEGORYPHONE."` AS `c` WHERE `b`.`id` = '" . $arrParam['phone_id'] . "' AND `c`.`id` = `b`.`category_phone_id`";
-			
-			$result	= $this->fetchRow($query);
-		
+
+		if ($option['task'] == 'phone-info') {
+			$query = "SELECT `b`.`id`, `b`.`name`, `c`.`name` AS `category_name`, `b`.`price`, `b`.`sale_off`, `b`.`picture`, `b`.`description`, `b`.`category_phone_id` FROM `" . TBL_PHONE . "` AS `b`, `" . TBL_CATEGORYPHONE . "` AS `c` WHERE `b`.`id` = '" . $arrParam['phone_id'] . "' AND `c`.`id` = `b`.`category_phone_id`";
+
+			$result = $this->fetchRow($query);
+
 			return $result;
 		}
 	}

@@ -1,6 +1,5 @@
 <?php
 
-
 // Slider-product-home
 $slider_home_list = '';
 if(!empty($this->specialPhone)){
@@ -14,11 +13,11 @@ foreach($this->specialPhone as $key => $value){
 	$description	= substr($value['description'], 0, 200);
     $sourcePicture 		= $value['picture'];
     $uploadFolder ='phone';
+    $linkzoom	= URL::createLink('phone', 'phone', 'quickView', array('phone_id' => $value['id']));
+
     $link	= URL::createLink('phone', 'phone', 'detail', array('category_phone_id' => $value['category_phone_id'],'phone_id' => $value['id']), "$catNameURL/$phoneNameURL-$category_phone-$phoneID.html");
     $picture = '<img src="' . UPLOAD_URL . $uploadFolder . '/' . $sourcePicture . '" alt="' . $name . '">';
     $price = number_format($value['price'], 0, ",", ".");
- 
-
     $slider_home_list .= '<div class="item">
     <div class="product">
         <div class="product_img">
@@ -27,8 +26,8 @@ foreach($this->specialPhone as $key => $value){
             </a>
             <div class="product_action_box">
                 <ul class="list_none pr_action_btn">
-                    <li class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i> Chọn mua</a></li>
-                    <li><a href="shop-quick-view.php" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
+                    <li class="add-to-cart"><a href="#"  onclick="addCart('. $phoneID.', 1)" ><i class="icon-basket-loaded"></i> Chọn mua</a></li>
+                    <li><a href="'.$linkzoom.'" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
                     <li><a href="#"><i class="icon-heart"></i></a></li>
                 </ul>
             </div>
@@ -63,6 +62,7 @@ foreach($this->newPhone as $key => $value){
     $phoneNameURL	= URL::filterURL($name);
 	$catNameURL		= URL::filterURL($value['category_name']);
 	$description	= substr($value['description'], 0, 200);
+    $linkzoom	= URL::createLink('phone', 'phone', 'quickView', array('phone_id' => $value['id']));
     $sourcePicture 		= $value['picture'];
     $uploadFolder ='phone';
     $link	= URL::createLink('phone', 'phone', 'detail', array('category_phone_id' => $value['category_phone_id'],'phone_id' => $value['id']), "$catNameURL/$phoneNameURL-$category_phone-$phoneID.html");
@@ -78,8 +78,8 @@ foreach($this->newPhone as $key => $value){
             </a>
             <div class="product_action_box">
                 <ul class="list_none pr_action_btn">
-                    <li class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i>Chọn mua</a></li>
-                    <li><a href="shop-quick-view.php" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
+                    <li class="add-to-cart"><a href="#" onclick="addCart('. $phoneID.', 1)" ><i class="icon-basket-loaded"></i>Chọn mua</a></li>
+                    <li><a href="'.$linkzoom.'" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
                     <li><a href="#"><i class="icon-heart"></i></a></li>
                 </ul>
             </div>
@@ -114,6 +114,7 @@ foreach($this->specialPhone as $key => $value){
     $phoneID =$value['id'];
     $category_phone =   $value['category_phone_id'];
     $phoneNameURL	= URL::filterURL($name);
+    $linkzoom	= URL::createLink('phone', 'phone', 'quickView', array('phone_id' => $value['id']));
 	$catNameURL		= URL::filterURL($value['category_name']);
 	$description	= substr($value['description'], 0, 200);
     $sourcePicture 		= $value['picture'];
@@ -132,8 +133,8 @@ foreach($this->specialPhone as $key => $value){
             </a>
             <div class="product_action_box">
                 <ul class="list_none pr_action_btn">
-                    <li class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i>Chọn mua</a></li>
-                    <li><a href="shop-quick-view.php" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
+                    <li class="add-to-cart"><a href="#" onclick="addCart('. $phoneID.', 1)" ><i class="icon-basket-loaded"></i>Chọn mua</a></li>
+                    <li><a href="'.$linkzoom.'" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
                     <li><a href="#"><i class="icon-heart"></i></a></li>
                 </ul>
             </div>

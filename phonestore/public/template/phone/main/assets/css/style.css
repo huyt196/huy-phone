@@ -55,7 +55,7 @@ body {
 }
 h1,h2,h3,h4,h5,h6 {
 	color: #292b2c;
-	font-family: 'Roboto';
+	font-family: 'Roboto', Arial, Helvetica, sans-serif;
 }
 p {
 	color:#687188;
@@ -1601,7 +1601,7 @@ button:focus {
 	color: #333 !important;
 }
 .cart_list img {
-	border: 1px solid #ddd
+	border: 1px solid #ddd;
 	background-color: #ffffff;
 	float: left;
 	margin-right: 10px;
@@ -4464,7 +4464,6 @@ footer .widget_title {
 	top: 0;
 	bottom: 0;
 	background-color: #FF324D;
-	z-index: ;
 	transition: all 0.5s ease-in-out;
 	-moz-transform: scale(0);
 	-webkit-transform: scale(0);
@@ -4890,7 +4889,7 @@ footer .widget_title {
 .countdown_time .countdown_box {
 	float: left;
 	width: 25%;
-	font-family: 'Roboto';
+	font-family: 'Roboto', Arial, Helvetica, sans-serif;
 	padding: 0 15px;
 }
 .countdown-wrap {
@@ -5071,6 +5070,9 @@ footer .widget_title {
 	line-height: 45px;
 	border: 1px solid #CED4DA;
 	border-radius: 4px;
+	display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .shorting_icon .ti-layout-list-thumb {
 	font-size: 24px;

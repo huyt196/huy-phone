@@ -35,15 +35,19 @@
 	define ('TBL_USER'			, 'user');
 	define ('TBL_PRIVELEGE'		, 'privilege');
 	define ('TBL_CATEGORY'		, 'category');
-	define ('TBL_CATEGORYPHONE'		, 'categoryphone');
+	define ('TBL_CATEGORYPHONE'	, 'categoryphone');
 	define ('TBL_BOOK'			, 'book');
-	define ('TBL_SLIDER'			, 'slider');
+	define ('TBL_SLIDER'		, 'slider');
 	define ('TBL_PHONE'			, 'phone');
+	define ('TBL_ORDER'			, 'orders');
+	define ('TBL_ORDER_DETAIL'	, 'order_details');
+	define ('TBL_ORDER_STATUS'	, 'order_status');
+	define ('TBL_RSS'			, 'rss');
 	define ('TBL_CART'			, 'cart');
-	define ('TBL_CONTACT'			, 'contact');
+	define ('TBL_CONTACT'		, 'contact');
 	define ('TBL_FAQ'			, 'faq');
 	define ('TBL_MENU'			, 'menu');
-	define ('TBL_EXPERIENCE'			, 'experience');
+	define ('TBL_EXPERIENCE'	, 'experience');
 	// ====================== CONFIG ===========================
 	define ('TIME_LOGIN'		, 3600);
 ?>

@@ -7,7 +7,7 @@ class ArticleModel extends Model{
 	public function __construct(){
 		parent::__construct();
 			
-		$this->setTable(TBL_BOOK);
+		$this->setTable(TBL_RSS);
 		$userObj 			= Session::get('user');
 		$this->_userInfo 	= $userObj['info'];
 	}

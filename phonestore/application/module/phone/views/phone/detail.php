@@ -58,6 +58,7 @@
 	$file_product = UPLOAD_URL . $uploadFolder . '/' . $sourcePicture;
     $picture_zoom = '<img id="product_img" src="' . $file_product . '" data-zoom-image="'  . $file_product . ' alt="'.$name.'"">';
 	$picture 		= Helper::createImage('phone', '', $phoneInfo['picture']);
+    $picture1 = $phoneInfo['picture'];
 	$picturePath	= UPLOAD_PATH . 'phone' . DS . '' . $phoneInfo['picture'];
 	$pictureFull	= '';
 	if(file_exists($picturePath)==true){
@@ -91,16 +92,13 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-6 mb-4 mb-md-0">
                             <div class="product-image">
-                                <div class="product_img_box">
-								<?php
-
-								echo $picture_zoom;
-								?>
-
-                                    <a href="#" class="product_img_zoom custom-zoom" title="Zoom">
-                                        <span class="linearicons-zoom-in"></span>
-                                    </a>
-                                </div>
+                            <div class="product_img_box">
+                                <img id="product_img" src="<?= UPLOAD_URL ?>phone/<?= $picture1 ?>" alt="<?= $name ?>"
+                                    data-zoom-image="<?= UPLOAD_URL ?>phone/<?= $picture1 ?>" />
+                                <a href="#" class="product_img_zoom custom-zoom" title="Zoom">
+                                    <span class="linearicons-zoom-in"></span>
+                                </a>
+                            </div>
                                 <div id="pr_item_gallery" class="product_gallery_item slick_slider" data-slides-to-show="4" data-slides-to-scroll="1" data-infinite="false">
                                     <div class="item">
                                         <a href="#" class="product_gallery_item active" data-image="<?php echo $file_product  ?>" data-zoom-image="<?php echo $file_product  ?>">
@@ -240,9 +238,9 @@
                             <div class="releted_product_slider carousel_slider owl-carousel owl-theme" data-margin="20" data-responsive='{"0":{"items": "1"}, "481":{"items": "2"}, "768":{"items": "3"}, "992":{"items": "2"}, "1199":{"items": "3"}}'>
                                
 							<?php
-echo $xhtmlRelatePhone;
+                echo $xhtmlRelatePhone;
 
-?>
+                                ?>
                                    
                             </div>
                         </div>
