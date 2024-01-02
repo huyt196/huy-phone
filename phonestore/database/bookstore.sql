@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 29, 2023 lúc 10:07 AM
+-- Thời gian đã tạo: Th1 02, 2024 lúc 06:43 AM
 -- Phiên bản máy phục vụ: 10.4.11-MariaDB
 -- Phiên bản PHP: 7.2.31
 
@@ -154,7 +154,8 @@ CREATE TABLE `categoryphone` (
 
 INSERT INTO `categoryphone` (`id`, `name`, `picture`, `created`, `created_by`, `modified`, `modified_by`, `status`, `ordering`, `menu_id`) VALUES
 (1, 'Iphone', 'xun8mjy6.png', '2023-12-20', 'admin', '0000-00-00', '', 1, 1, 3),
-(2, 'samsung', 'f9whz15l.jpg', '2023-12-20', 'admin', '0000-00-00', '', 1, 2, 3);
+(2, 'samsung', 'f9whz15l.jpg', '2023-12-20', 'admin', '0000-00-00', '', 1, 2, 3),
+(3, 'phụ kiện Apple', 'oq5j9w6z.png', '2023-12-31', 'admin', '0000-00-00', '', 1, 1, 4);
 
 -- --------------------------------------------------------
 
@@ -166,7 +167,7 @@ CREATE TABLE `contact` (
   `id` int(50) NOT NULL,
   `fullname` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `phone` int(10) NOT NULL,
+  `phone` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `title` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `content` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created` date NOT NULL,
@@ -182,8 +183,17 @@ CREATE TABLE `contact` (
 --
 
 INSERT INTO `contact` (`id`, `fullname`, `email`, `phone`, `title`, `content`, `created`, `created_by`, `modified`, `modified_by`, `status`, `ordering`) VALUES
-(1, 'nguyen quang huy', 'nquanghuy@mail.com', 982605974, 'lam theo ten', 'có việc gì khó khăn', '2023-11-01', 'admin', '2023-12-08', 'admin', 1, 2),
-(2, 'minh hoang', 'hoang@gmail.com', 982605974, 'toi han', 'có gì mà làm', '2023-11-02', 'admin', '2023-12-08', 'admin', 1, 2);
+(1, 'nguyen quang huy', 'nquanghuy@mail.com', '982605974', 'lam theo ten', 'có việc gì khó khăn', '2023-11-01', 'admin', '2023-12-08', 'admin', 1, 2),
+(2, 'minh hoang', 'hoang@gmail.com', '982605974', 'toi han', 'có gì mà làm', '2023-11-02', 'admin', '2023-12-08', 'admin', 1, 2),
+(3, 'Nguyễn huy', 'zomhuygunz1@gmail.com', '0379511465', 'adadad', 'asasasasa', '2023-12-30', 'zomhuygunz1@gmail.com', '0000-00-00', '', 0, 1),
+(4, 'Nguyễn huy', 'zomhuygunz1@gmail.com', '0379511465', 'adadad', 'asasasasa', '2023-12-30', 'zomhuygunz1@gmail.com', '0000-00-00', '', 0, 1),
+(5, 'Nguyễn huy', 'zomhuygunz1@gmail.com', '0379511465', 'adadad', 'asasasasa', '2023-12-30', 'zomhuygunz1@gmail.com', '0000-00-00', '', 0, 1),
+(6, 'Nguyễn huy', 'zomhuygunz1@gmail.com', '0379511465', 'adadad', 'asasasasa', '2023-12-30', 'zomhuygunz1@gmail.com', '0000-00-00', '', 0, 1),
+(7, 'Nguyễn huy', 'zomhuygunz1@gmail.com', '0379511465', 'adadad', 'asasasasa', '2023-12-30', 'zomhuygunz1@gmail.com', '0000-00-00', '', 0, 1),
+(8, 'Nguyễn huy', 'zomhuygunz1@gmail.com', '0379511465', 'adadad', 'asasasasa', '2023-12-30', 'zomhuygunz1@gmail.com', '0000-00-00', '', 0, 1),
+(9, 'Nguyễn huy', 'zomhuygunz1@gmail.com', '0379511465', 'adadad', 'asasasasa', '2023-12-30', 'zomhuygunz1@gmail.com', '0000-00-00', '', 0, 1),
+(10, 'Nguyễn huy', 'zomhuygunz1@gmail.com', '0379511465', 'adadad', 'asasasasa', '2023-12-30', 'zomhuygunz1@gmail.com', '0000-00-00', '', 0, 1),
+(11, 'Nguyễn huy', 'zomhuygunz1@gmail.com', '0379511465', 'Gửi lại lần 2', 'Gửi lại lần 2 abc', '2023-12-30', 'zomhuygunz1@gmail.com', '2023-12-31', 'admin', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -307,6 +317,78 @@ INSERT INTO `menu` (`id`, `name`, `status`, `created`, `created_by`, `modified`,
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `orders`
+--
+
+CREATE TABLE `orders` (
+  `OrderID` int(11) NOT NULL,
+  `CustomerID` varchar(255) DEFAULT NULL,
+  `Fullname` varchar(255) DEFAULT NULL,
+  `Email` varchar(255) NOT NULL,
+  `PhoneNumber` varchar(255) NOT NULL,
+  `Address` text NOT NULL,
+  `Note` text NOT NULL,
+  `OrderDate` datetime DEFAULT NULL,
+  `TotalAmount` decimal(12,0) DEFAULT NULL,
+  `Status` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `orders`
+--
+
+INSERT INTO `orders` (`OrderID`, `CustomerID`, `Fullname`, `Email`, `PhoneNumber`, `Address`, `Note`, `OrderDate`, `TotalAmount`, `Status`) VALUES
+(13, 'S5U49X0VFA', 'Nguyễn huy', 'zomhuygunz1@gmail.com', '0379511465', 'Bình Đại', 'aasasa', '2023-12-30 12:08:47', '4990000', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `order_details`
+--
+
+CREATE TABLE `order_details` (
+  `ID` int(11) NOT NULL,
+  `OrderID` int(11) DEFAULT NULL,
+  `ProductID` int(11) DEFAULT NULL,
+  `Price` decimal(12,0) NOT NULL,
+  `Quantity` int(11) DEFAULT NULL,
+  `Subtotal` decimal(12,0) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `order_details`
+--
+
+INSERT INTO `order_details` (`ID`, `OrderID`, `ProductID`, `Price`, `Quantity`, `Subtotal`) VALUES
+(13, 13, 16, '4990000', 1, '4990000');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `order_status`
+--
+
+CREATE TABLE `order_status` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `status` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `order_status`
+--
+
+INSERT INTO `order_status` (`id`, `name`, `status`) VALUES
+(1, 'Chờ xác nhận', 1),
+(2, 'Đã đóng gói', 1),
+(3, 'Đang vận chuyển', 1),
+(4, 'Đang giao hàng', 1),
+(5, 'Thành công', 1),
+(6, 'Đã hủy', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `phone`
 --
 
@@ -332,24 +414,45 @@ CREATE TABLE `phone` (
 --
 
 INSERT INTO `phone` (`id`, `name`, `description`, `price`, `special`, `sale_off`, `picture`, `created`, `created_by`, `modified`, `modified_by`, `status`, `ordering`, `category_phone_id`) VALUES
-(1, 'Iphone 15 Pro Max', 'iPhone 15 Pro Max là một chiếc điện thoại thông minh cao cấp được mong đợi nhất năm 2023. Với nhiều tính năng mới và cải tiến, iPhone 15 Pro Max chắc chắn sẽ là một lựa chọn tuyệt vời cho những người dùng đang tìm kiếm một chiếc điện thoại có hiệu năng mạ', '3300000', 1, 0, 'iphone15pm.jpg', '2023-12-08', 'admin', '2023-12-08', 'admin', 1, 1, 1),
-(2, 'Sam Sung S22 Utral', 'Samsung Galaxy S23 Ultra 5G 512GB là một sản phẩm công nghệ không còn xa lạ với những người yêu công nghệ. Máy vừa được giới thiệu với nhiều tính năng và công nghệ nổi bật, đánh dấu một bước tiến đột phá của Samsung trong năm 2023, nhằm tạo nên một thương', '220000', NULL, 0, '1ls7dymi.jpg', '2023-12-08', 'admin', '2023-12-10', 'admin', 1, 1, 2),
-(3, 'IPhone 12', 'Apple đã trang bị con chip mới nhất của hãng (tính đến 11/2020) cho iPhone 12 đó là A14 Bionic, được sản xuất trên tiến trình 5 nm với hiệu suất ổn định hơn so với chip A13 được trang bị trên phiên bản tiền nhiệm iPhone 11.', '12590000', 1, 13590000, 'zmxk8fnp.jpg', '2023-12-08', 'admin', '2023-12-29', 'admin', 1, 1, 1),
-(4, 'Iphone13 Pro Max', 'Con chip Apple A15 Bionic siêu mạnh được sản xuất trên quy trình 5 nm giúp iPhone 13 đạt hiệu năng ấn tượng, với CPU nhanh hơn 50%, GPU nhanh hơn 30% so với các đối thủ trong cùng phân khúc.', '22590000', NULL, 23590000, 'lf7any62.jpg', '2023-12-10', 'admin', '2023-12-29', 'admin', 1, 1, 1),
+(1, 'Iphone 15 Pro Max', 'iPhone 15 Pro Max là một chiếc điện thoại thông minh cao cấp được mong đợi nhất năm 2023. Với nhiều tính năng mới và cải tiến, iPhone 15 Pro Max chắc chắn sẽ là một lựa chọn tuyệt vời cho những người dùng đang tìm kiếm một chiếc điện thoại có hiệu năng mạ', '3400000', 1, 3300000, 'iphone15pm.jpg', '2023-12-08', 'admin', '2023-12-31', 'admin', 1, 1, 1),
+(2, 'Sam Sung S22 Utral', 'Samsung Galaxy S23 Ultra 5G 512GB là một sản phẩm công nghệ không còn xa lạ với những người yêu công nghệ. Máy vừa được giới thiệu với nhiều tính năng và công nghệ nổi bật, đánh dấu một bước tiến đột phá của Samsung trong năm 2023, nhằm tạo nên một thương', '22000000', NULL, 21000000, '1ls7dymi.jpg', '2023-12-08', 'admin', '2023-12-31', 'admin', 1, 1, 2),
+(3, 'IPhone 12', 'Apple đã trang bị con chip mới nhất của hãng (tính đến 11/2020) cho iPhone 12 đó là A14 Bionic, được sản xuất trên tiến trình 5 nm với hiệu suất ổn định hơn so với chip A13 được trang bị trên phiên bản tiền nhiệm iPhone 11.', '13590000', 1, 12590000, 'zmxk8fnp.jpg', '2023-12-08', 'admin', '2023-12-31', 'admin', 1, 1, 1),
+(4, 'Iphone13 Pro Max', 'Con chip Apple A15 Bionic siêu mạnh được sản xuất trên quy trình 5 nm giúp iPhone 13 đạt hiệu năng ấn tượng, với CPU nhanh hơn 50%, GPU nhanh hơn 30% so với các đối thủ trong cùng phân khúc.', '23590000', NULL, 22590000, 'lf7any62.jpg', '2023-12-10', 'admin', '2023-12-31', 'admin', 1, 1, 1),
 (5, 'Iphone 14', 'Con chip Apple A15 Bionic siêu mạnh được sản xuất trên quy trình 5 nm giúp iPhone 14 đạt hiệu năng ấn tượng, với CPU nhanh hơn 50%, GPU nhanh hơn 30% so với các đối thủ trong cùng phân khúc.', '18590000', 1, 19590000, 'o87nv5yf.jpg', '2023-12-10', 'admin', '2023-12-29', 'admin', 1, 1, 1),
 (6, 'Iphone12 Pro Max', 'Năm nay, công nghệ màn hình trên 12 Pro Max cũng được đổi mới và trang bị tốt hơn cùng kích thước lên đến 6.7 inch, lớn hơn so với điện thoại iPhone 12 thường. Với công nghệ màn hình OLED cho khả năng hiển thị hình ảnh lên đến 2778 x 1284 pixels. Bên cạnh', '23590000', 1, 24590000, 'f42idzbr.jpg', '2023-12-10', 'admin', '2023-12-29', 'admin', 1, 1, 1),
 (7, 'Iphone 15', 'Với iPhone 15, bạn sẽ được tận hưởng những trải nghiệm cao cấp trên một thiết bị bền bỉ và thanh lịch. Sản phẩm gây ấn tượng với màn hình Dynamic Island, camera độ phân giải siêu cao cùng nhiều chế độ quay chụp xuất sắc. Nhờ cổng USB-C, trải nghiệm kết nố', '21590000', 1, 22590000, 'auscf6gh.jpg', '2023-12-10', 'admin', '2023-12-29', 'admin', 1, 1, 1),
 (8, 'Samsung Galaxy A25', 'Giảm ngay 150.000đ khi mua kèm SIM số đẹp Vinaphone Happy - Ưu đãi 2GB Data/ngày - Miễn phí 1000 phút nội mạng.', '6690000', 1, 7690000, '4dwz35no.jpg', '2023-12-10', 'admin', '2023-12-29', 'admin', 1, 1, 2),
-(9, 'Samsung Galaxy A04s ', 'Galaxy A04s ra mắt với màn hình 90Hz mượt mà nhất phân khúc cùng dung lượng pin khủng 5000mAh. Kết hợp với nhiều tính năng hấp dẫn, “hậu bối” nổi bật thuộc dòng điện thoại Galaxy A series này hứa hẹn sẽ thăng hạng trải nghiệm cho giới trẻ.', '2690000', NULL, 3690000, 'tefgbmnw.png', '2023-12-10', 'admin', '2023-12-29', 'admin', 1, 2, 2),
-(10, 'Samsung Galaxy A54 ', 'Điện thoại Galaxy A54 5G với màn hình Super AMOLED kích thước 6.4 inch và độ phân giải Full HD+ (1080 x 2340 pixels). Điều này giúp người dùng có trải nghiệm hình ảnh sống động, sắc nét.\r\n\r\nBên cạnh đó, màn hình của Galaxy A54 5G còn được trang bị tốc độ ', '9690000', 1, 11690000, 'ony6aljf.jpg', '2023-12-10', 'admin', '2023-12-29', 'admin', 1, 2, 2),
-(11, 'Samsung Galaxy A34', 'Samsung Galaxy A34 5G đặc biệt ở chỗ sở hữu các phiên bản màu thời trang và trẻ trung. Bao gồm màu Đen, Xanh, Bạc điện thoại sẽ chắc chắn thu hút ánh nhìn của nhiều người. Đồng thời, máy cũng có viền bezel 2 cạnh được làm mỏng tối ưu, đem đến thiết kế đầy', '6690000', 1, 7690000, 'capvdsj6.jpg', '2023-12-10', 'admin', '2023-12-29', 'admin', 1, 2, 2),
-(12, 'Samsung Galaxy A05', 'Samsung Galaxy A05 khoác lên mình vẻ ngoài vô cùng nổi bật với những đường nét bo cong nhẹ nhàng, tinh tế. Được trau chuốt kỹ lưỡng về mặt thiết kế cũng như rất chú trọng về độ bền của sản phẩm, chính vì vậy, toàn bộ khung viền của chiếc điện thoại thông ', '2690000', 1, 3690000, 'qcosvewi.jpg', '2023-12-10', 'admin', '2023-12-29', 'admin', 1, 1, 2),
-(13, 'Samsung Galaxy S20 FE', 'Ngày nay, việc chụp ảnh, quay video và chia sẻ những “tác phẩm” của mình là cách tốt nhất để thể hiện cá tính riêng. Đó là lý do tại sao Galaxy S20 FE có camera selfie 32MP cải tiến và camera cấp chuyên nghiệp cho phép bạn chụp ngay những bức ảnh hoàn hảo', '6790000', 1, 8790000, 'mpkha0rs.jpg', '2023-12-10', 'admin', '2023-12-29', 'admin', 1, 1, 2),
-(14, 'Samsung Galaxy A15', 'Vào dịp cuối năm 2023, Samsung tiếp tục mang đến cho người dùng mẫu điện thoại Samsung Galaxy A thế hệ mới, đây là phiên bản nâng cấp của Galaxy A14 với tên gọi Samsung Galaxy A15. Máy sở hữu phong cách thiết kế hiện đại, màn hình Super AMOLED sắc nét cùn', '5590000', 1, 6590000, 'de4f2vmj.png', '2023-12-29', 'admin', '2023-12-29', 'admin', 1, 2, 2),
-(15, ' Samsung Galaxy M54 5G', 'Phải công nhận một điều là các mẫu điện thoại Samsung Galaxy M đều mang trong mình một hiệu năng vượt trội và Galaxy M54 5G không phải là một ngoại lệ. Máy đã có sự nâng cấp so với người đàn anh của mình khi được trang bị con chip Exynos 1380 8 nhân đầy m', '10590000', 1, 0, '64dh2kqb.jpg', '2023-12-29', 'admin', '2023-12-29', 'admin', 1, 2, 2),
-(16, 'Samsung Galaxy A14', 'Samsung tiếp tục chứng tỏ sự nỗ lực của mình trong việc cải thiện dòng sản phẩm phân khúc cấp thấp trong năm 2023 bằng việc ra mắt mẫu smartphone Samsung Galaxy A14 4G. Với thiết kế độc đáo và hiện đại, sản phẩm này đáp ứng đầy đủ tiêu chí \"ngon - bổ - rẻ', '3990000', 1, 4990000, 'm59wkro4.jpg', '2023-12-29', 'admin', '2023-12-29', 'admin', 1, 2, 2),
-(17, 'Samsung Galaxy S21 FE', 'Samsung Galaxy S21 FE 5G (6GB/128GB) được Samsung ra mắt với dáng dấp thời thượng, cấu hình khỏe, chụp ảnh đẹp với bộ 3 camera chất lượng, thời lượng pin đủ dùng hằng ngày và còn gì nữa? Mời bạn khám phá qua nội dung sau ngay.', '9590000', 1, 0, '5fdyl3wi.jpg', '2023-12-29', 'admin', '2023-12-29', 'admin', 1, 3, 2),
-(18, 'Samsung Galaxy Z Flip5 5G', 'Samsung Galaxy Z Flip5 tiếp tục theo đuổi phong cách gập độc đáo đã trở thành thương hiệu của dòng sản phẩm \"Z Flip\". Với thiết kế nhỏ gọn và hình dáng hộp phấn khi gập lại, chiếc điện thoại này rất dễ dàng cất đi trong túi áo hoặc túi xách.\r\n\r\n', '19590000', 1, 0, '10pe4z8g.jpg', '2023-12-29', 'admin', '2023-12-29', 'admin', 1, 2, 2);
+(9, 'Samsung Galaxy A04s ', 'Galaxy A04s ra mắt với màn hình 90Hz mượt mà nhất phân khúc cùng dung lượng pin khủng 5000mAh. Kết hợp với nhiều tính năng hấp dẫn, “hậu bối” nổi bật thuộc dòng điện thoại Galaxy A series này hứa hẹn sẽ thăng hạng trải nghiệm cho giới trẻ.', '3690000', NULL, 2690000, 'tefgbmnw.png', '2023-12-10', 'admin', '2023-12-31', 'admin', 1, 2, 2),
+(10, 'Samsung Galaxy A54 ', 'Điện thoại Galaxy A54 5G với màn hình Super AMOLED kích thước 6.4 inch và độ phân giải Full HD+ (1080 x 2340 pixels). Điều này giúp người dùng có trải nghiệm hình ảnh sống động, sắc nét.\r\n\r\nBên cạnh đó, màn hình của Galaxy A54 5G còn được trang bị tốc độ ', '11690000', 1, 9690000, 'ony6aljf.jpg', '2023-12-10', 'admin', '2023-12-31', 'admin', 1, 2, 2),
+(11, 'Samsung Galaxy A34', 'Samsung Galaxy A34 5G đặc biệt ở chỗ sở hữu các phiên bản màu thời trang và trẻ trung. Bao gồm màu Đen, Xanh, Bạc điện thoại sẽ chắc chắn thu hút ánh nhìn của nhiều người. Đồng thời, máy cũng có viền bezel 2 cạnh được làm mỏng tối ưu, đem đến thiết kế đầy', '7690000', 1, 6690000, 'capvdsj6.jpg', '2023-12-10', 'admin', '2023-12-31', 'admin', 1, 2, 2),
+(12, 'Samsung Galaxy A05', 'Samsung Galaxy A05 khoác lên mình vẻ ngoài vô cùng nổi bật với những đường nét bo cong nhẹ nhàng, tinh tế. Được trau chuốt kỹ lưỡng về mặt thiết kế cũng như rất chú trọng về độ bền của sản phẩm, chính vì vậy, toàn bộ khung viền của chiếc điện thoại thông ', '3690000', 1, 2690000, 'qcosvewi.jpg', '2023-12-10', 'admin', '2023-12-31', 'admin', 1, 1, 2),
+(13, 'Samsung Galaxy S20 FE', 'Ngày nay, việc chụp ảnh, quay video và chia sẻ những “tác phẩm” của mình là cách tốt nhất để thể hiện cá tính riêng. Đó là lý do tại sao Galaxy S20 FE có camera selfie 32MP cải tiến và camera cấp chuyên nghiệp cho phép bạn chụp ngay những bức ảnh hoàn hảo', '8790000', 1, 6790000, 'mpkha0rs.jpg', '2023-12-10', 'admin', '2023-12-31', 'admin', 1, 1, 2),
+(14, 'Samsung Galaxy A15', 'Vào dịp cuối năm 2023, Samsung tiếp tục mang đến cho người dùng mẫu điện thoại Samsung Galaxy A thế hệ mới, đây là phiên bản nâng cấp của Galaxy A14 với tên gọi Samsung Galaxy A15. Máy sở hữu phong cách thiết kế hiện đại, màn hình Super AMOLED sắc nét cùn', '6590000', 1, 5590000, 'de4f2vmj.png', '2023-12-29', 'admin', '2023-12-31', 'admin', 1, 2, 2),
+(15, ' Samsung Galaxy M54 5G', 'Phải công nhận một điều là các mẫu điện thoại Samsung Galaxy M đều mang trong mình một hiệu năng vượt trội và Galaxy M54 5G không phải là một ngoại lệ. Máy đã có sự nâng cấp so với người đàn anh của mình khi được trang bị con chip Exynos 1380 8 nhân đầy m', '11590000', 1, 10590000, '64dh2kqb.jpg', '2023-12-29', 'admin', '2023-12-31', 'admin', 1, 2, 2),
+(16, 'Samsung Galaxy A14', 'Samsung tiếp tục chứng tỏ sự nỗ lực của mình trong việc cải thiện dòng sản phẩm phân khúc cấp thấp trong năm 2023 bằng việc ra mắt mẫu smartphone Samsung Galaxy A14 4G. Với thiết kế độc đáo và hiện đại, sản phẩm này đáp ứng đầy đủ tiêu chí \"ngon - bổ - rẻ', '4990000', 1, 3990000, 'm59wkro4.jpg', '2023-12-29', 'admin', '2023-12-31', 'admin', 1, 2, 2),
+(17, 'Samsung Galaxy S21 FE', 'Samsung Galaxy S21 FE 5G (6GB/128GB) được Samsung ra mắt với dáng dấp thời thượng, cấu hình khỏe, chụp ảnh đẹp với bộ 3 camera chất lượng, thời lượng pin đủ dùng hằng ngày và còn gì nữa? Mời bạn khám phá qua nội dung sau ngay.', '10590000', 1, 9590000, '5fdyl3wi.jpg', '2023-12-29', 'admin', '2023-12-31', 'admin', 1, 3, 2),
+(18, 'Samsung Galaxy Z Flip5 5G', 'Samsung Galaxy Z Flip5 tiếp tục theo đuổi phong cách gập độc đáo đã trở thành thương hiệu của dòng sản phẩm \"Z Flip\". Với thiết kế nhỏ gọn và hình dáng hộp phấn khi gập lại, chiếc điện thoại này rất dễ dàng cất đi trong túi áo hoặc túi xách.\r\n\r\n', '20590000', 1, 19590000, '10pe4z8g.jpg', '2023-12-29', 'admin', '2023-12-31', 'admin', 1, 2, 2),
+(19, 'Tai nghe AirPods Pro 2023 USB-C', 'AirPods Pro 2023 là một sản phẩm tai nghe true wireless được nâng cấp đáng kể so với phiên bản cũ. Các tính năng mới nổi bật như cổng sạc USB-C, khả năng chống nước IPX4, chất lượng âm thanh được cải thiện và chống ồn mạnh mẽ sẽ mang lại trải nghiệm tốt h', '6990000', NULL, 5990000, '1vsxlbwa.jpg', '2023-12-31', 'admin', NULL, NULL, 1, 2, 3),
+(20, ' Tai nghe EarPods 2023 USB-C', 'Tai nghe có dây Apple EarPods 2023 tự hào mang đến một kiểu dáng và thiết kế đặc biệt, phá cách so với những chiếc tai nghe truyền thống hình tròn mà chúng ta thường thấy. Sự độc đáo của EarPods chính là sự kết hợp tinh tế giữa công nghệ và hình dạng tự n', '649000', NULL, 549000, 'wznxqgs2.jpg', '2023-12-31', 'admin', NULL, NULL, 1, 2, 3),
+(21, 'Tai nghe AirPods Pro 2022', 'Thế hệ AirPods Pro 2 được cải tiến nhằm chuyên nghiệp hóa trải nghiệm người dùng theo cách trọn vẹn hơn. Sự hiện diện của chip H2 giúp sản phẩm xử lý âm thanh xuất sắc, những nâng cấp về kỹ nghệ chống ồn, công nghệ xuyên âm và thời lượng pin cho cảm nhận ', '6990000', NULL, 5990000, 'gelo4c8a.jpg', '2023-12-31', 'admin', NULL, NULL, 1, 2, 3),
+(22, 'Sạc dự phòng MagSafe Battery Pack', 'Ngoài ra, khi gắn MagSafe Battery Pack vào iPhone, bạn có thể nhanh chóng theo dõi mức pin còn lại của bộ sạc dự phòng trong widget Battery. Một tính năng nhỏ nhưng vô cùng tiện lợi, cho phép bạn biết lúc nào cần sạc lại phụ kiện của mình.', '3990000', NULL, 2990000, '3lwgxos1.jpg', '2023-12-31', 'admin', NULL, NULL, 1, 2, 3),
+(23, 'Dây sạc Apple Magsafe Charger to USB-C Cable 1m', 'Phát huy công nghệ sạc được Apple sáng tạo và hỗ trợ trên các dòng iPhone thế hệ mới, bộ cáp sạc MagSafe Charger to USB-C tận dụng cơ chế từ tính độc đáo để tự động cố định chặt vào mặt lưng máy và truyền tải năng lượng nhanh chóng. Sự gọn nhẹ, tiện lợi c', '1990000', NULL, 590000, 'm5yxhiw2.jpg', '2023-12-31', 'admin', NULL, NULL, 1, 2, 3),
+(24, 'Tai nghe chụp tai Beats Studio3 Wireless', 'Với hàng loạt các tính năng như khử ồn chủ động Pure ANC, hiệu chỉnh âm thanh thời gian thực và thời lượng pin lên đến 22 giờ, Beats Studio3 chắc chắn sẽ là một chiếc tai nghe bluetooth hoàn hảo cho những người đang tìm kiếm trải nghiệm nghe cao cấp.', '6990000', NULL, 5990000, 'qg716mn8.jpg', '2023-12-31', 'admin', NULL, NULL, 1, 2, 3),
+(25, 'Tai nghe AirPods 3 2022 Hộp sạc dây', 'Phiên bản AirPods 3 hộp sạc dây đem đến lựa chọn với mức giá phải chăng và mô hình hoạt động quen thuộc khi chỉ hỗ trợ sạc cáp qua cổng Lightning. Ngoài ra, sản phẩm sở hữu mọi công nghệ tương tự như phiên bản AirPods 3 tiêu chuẩn, đem đến trải nghiệm đeo', '5990000', NULL, 4990000, 'syr6fmui.jpg', '2023-12-31', 'admin', NULL, NULL, 1, 1, 3),
+(26, 'Cáp USB-C to Magsafe 3 Cable Apple 2m', 'Tương thích với: \r\n\r\nMacBook Air (M2, 2022)\r\nMacBook Pro (14‑inch, 2023)\r\nMacBook Pro (14‑inch, 2021)\r\nMacBook Pro (16‑inch, 2023)\r\nMacBook Pro (16‑inch, 2021)', '1190000', NULL, 1090000, '2i98npev.jpg', '2023-12-31', 'admin', NULL, NULL, 1, 1, 3),
+(27, 'Củ sạc Apple Power Adapter 140W Type-C', 'Được sản xuất chính hãng bởi Apple, bộ sạc 140W USB-C Power Adapter ghi nhận khả năng sạc nhanh cho MacBook Pro 16 inch (2021) và nhiều sản phẩm nằm trong hệ sinh thái của Táo khuyết. Nhờ công nghệ điều tiết dòng điện thông minh, thiết bị này sẽ giúp bạn ', '3990000', NULL, 2990000, 'a853n2jl.jpg', '2023-12-31', 'admin', NULL, NULL, 1, 1, 3),
+(28, 'Chuột Magic Mouse 2 2021', 'Bạn sẽ khó lòng tìm được sản phẩm chuột không dây nào có thiết kế tinh tế và thời trang hơn Magic Mouse 2 2021 trên thị trường. Sản phẩm sở hữu kiểu dáng đầy phong cách với bề mặt Multi-Touch cảm ứng, hỗ trợ thực hiện thao tác cử chỉ nhẹ nhàng. Với thời l', '2990000', NULL, 1990000, 'lscmhwg8.jpg', '2023-12-31', 'admin', NULL, NULL, 1, 1, 3),
+(29, 'Dây Đeo AirTag Leather Key Ring', 'Dây đeo Leather Key Ring chính hãng Apple sẽ giúp bạn dễ dàng treo AirTag lên các vật dụng mình muốn để định vị khi cần. Đây là giải pháp chứa đựng và hỗ trợ sử dụng AirTag từ chính đội ngũ Apple, đồng thời cũng là cách để bạn biến thiết bị định vị của mì', '990000', NULL, 790000, '8has2xwn.jpg', '2023-12-31', 'admin', NULL, NULL, 1, 1, 3),
+(30, 'Tai nghe AirPods Max', 'Là chiếc AirPods đầu tiên trong lịch sử Apple đi theo phong cách thiết kế over-ear chuyên dụng, AirPods Max đem tới sự cân bằng hoàn hảo giữa trải nghiệm âm thanh trung thực và tính tiện dụng đặc trưng của dòng tai nghe đến từ Táo khuyết.', '12990000', NULL, 11990000, '3huep6gj.png', '2023-12-31', 'admin', NULL, NULL, 1, 1, 3),
+(31, 'Bao da iPad 10.2 & Air 3 10.5 inch Apple', 'Apple Smart Cover Cactus là bao da thông minh dành cho iPad 10.2 với màu xanh Cactus độc đáo, thiết kế mỏng nhẹ, khả năng bảo vệ hoàn hảo, tự động tắt/mở máy và dựng iPad với nhiều tư thế. Sản phẩm chính hãng từ Apple mang đến chất lượng và sự yên tâm tro', '1990000', NULL, 990000, 'vz24dphi.png', '2023-12-31', 'admin', NULL, NULL, 1, 1, 3),
+(32, 'Vỏ Bút cảm ứng Apple Pencil Case', 'Ngoài phần vỏ da bọc lấy Apple Pencil phòng tránh hư hại, bộ Case Saddle Brown này còn có thêm một phần viền da bên ngoài tạo thành điểm tì trên mặt phẳng, tránh cho chiếc bút bị lăn đi khi đặt trên mặt bàn, từ đó hạn chế những trường hợp thất lạc ngoài ý', '690000', NULL, 590000, 'ln18rz94.jpg', '2023-12-31', 'admin', '2023-12-31', 'admin', 1, 1, 3),
+(33, 'Dây đeo Apple Watch 44mm nylon Khaki', 'Sản phẩm chỉ là dây đeo bạn nha, không phải đồng hồ ạ. Thông tin của dây đã có trong mục thông số kỹ thuật trên web bạn nhé. Để được hỗ trợ chi tiết thêm bạn vui lòng để lại thông tin liên hệ (Tên, số điện thoại), bên mình sẽ chủ động liên hệ hỗ trợ cho b', '990000', NULL, 590000, '0geyx1w8.jpg', '2023-12-31', 'admin', NULL, NULL, 1, 1, 3),
+(34, 'IPhone 14 Plus', 'Sau nhiều thế hệ điện thoại của Apple thì cái tên “Plus” cũng đã chính thức trở lại vào năm 2022 và xuất hiện trên chiếc iPhone 14 Plus 128GB, nổi trội với ngoại hình bắt trend cùng màn hình kích thước lớn để đem đến không gian hiển thị tốt hơn cùng cấu h', '21990000', NULL, 20990000, 'v853qi76.jpg', '2023-12-31', 'admin', '2023-12-31', 'admin', 1, 1, 1),
+(35, 'iPhone 15', 'Dynamic Island là tên gọi của phần khuyết trên màn hình iPhone 15. Phần khuyết này có hình dạng giống như một viên thuốc, bao gồm camera TrueDepth và các cảm biến cần thiết cho các tính năng như Face ID và Animoji.', '22990000', NULL, 21990000, 'cs0tb7j6.jpg', '2023-12-31', 'admin', NULL, NULL, 1, 1, 1),
+(36, 'iPhone 14 Pro ', 'Apple trong sự kiện ngày 8/9 đã giới thiệu đến người dùng mẫu iPhone 14 Pro 256GB mang những cải tiến về mặt thiết kế cũng như cấu hình phần cứng, hứa hẹn một sản phẩm mạnh mẽ đáp ứng mọi nhu cầu của bạn.', '22990000', NULL, 21990000, 't4fkqg69.jpg', '2023-12-31', 'admin', NULL, NULL, 1, 1, 1),
+(37, ' iPhone 14 Pro Max', 'iPhone 14 Pro Max một siêu phẩm trong giới smartphone được nhà Táo tung ra thị trường vào tháng 09/2022. Máy trang bị con chip Apple A16 Bionic vô cùng mạnh mẽ, đi kèm theo đó là thiết kế màn hình mới, hứa hẹn mang lại những trải nghiệm đầy mới mẻ cho ngư', '23990000', NULL, 21990000, 'tlb9c2y3.jpg', '2023-12-31', 'admin', NULL, NULL, 1, 1, 1),
+(38, 'iPhone 13', 'Trong khi sức hút đến từ bộ 4 phiên bản iPhone 12 vẫn chưa nguội đi, thì hãng điện thoại Apple đã mang đến cho người dùng một siêu phẩm mới iPhone 13 với nhiều cải tiến thú vị sẽ mang lại những trải nghiệm hấp dẫn nhất cho người dùng.', '21990000', NULL, 17990000, 'mhxi8qu1.jpg', '2023-12-31', 'admin', NULL, NULL, 1, 1, 2),
+(39, 'iPhone 11', 'Apple đã chính thức trình làng bộ 3 siêu phẩm iPhone 11, trong đó phiên bản iPhone 11 64GB có mức giá rẻ nhất nhưng vẫn được nâng cấp mạnh mẽ như iPhone Xr ra mắt trước đó.', '21990000', NULL, 11990000, 'aegd0w48.jpg', '2023-12-31', 'admin', NULL, NULL, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -404,7 +507,7 @@ INSERT INTO `rss` (`id`, `link`, `status`, `ordering`) VALUES
 (16, 'https://vnexpress.net/rss/giai-tri.rss', '0', 12),
 (18, 'https://vnexpress.net/rss/phap-luat.rss', '0', 10),
 (20, 'https://vnexpress.net/rss/oto-xe-may.rss', '0', 35),
-(21, 'https://vnexpress.net/rss/gia-dinh.rss', '1', 3);
+(21, 'https://vnexpress.net/rss/gia-dinh.rss', '1', 1);
 
 -- --------------------------------------------------------
 
@@ -527,6 +630,24 @@ ALTER TABLE `menu`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Chỉ mục cho bảng `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`OrderID`);
+
+--
+-- Chỉ mục cho bảng `order_details`
+--
+ALTER TABLE `order_details`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Chỉ mục cho bảng `order_status`
+--
+ALTER TABLE `order_status`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Chỉ mục cho bảng `phone`
 --
 ALTER TABLE `phone`
@@ -576,13 +697,13 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT cho bảng `categoryphone`
 --
 ALTER TABLE `categoryphone`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT cho bảng `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT cho bảng `faq`
@@ -603,10 +724,28 @@ ALTER TABLE `menu`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT cho bảng `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `OrderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT cho bảng `order_details`
+--
+ALTER TABLE `order_details`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT cho bảng `order_status`
+--
+ALTER TABLE `order_status`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT cho bảng `phone`
 --
 ALTER TABLE `phone`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT cho bảng `privilege`
