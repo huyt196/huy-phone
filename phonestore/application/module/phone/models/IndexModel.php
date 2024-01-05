@@ -55,7 +55,7 @@ class IndexModel extends Model{
 			$query[]	= "FROM `".TBL_PHONE."` AS `b`, `".TBL_CATEGORYPHONE."` AS `c`";
 			$query[]	= "WHERE `b`.`status`  = 1 AND `b`.`special` = 1 AND `c`.`id` = `b`.`category_phone_id`";
 			$query[]	= "ORDER BY `b`.`ordering` ASC";
-			$query[]	= "LIMIT 0, 6";
+			$query[]	= "LIMIT 0, 8";
 	
 			$query		= implode(" ", $query);
 			$result		= $this->fetchAll($query);
@@ -66,6 +66,17 @@ class IndexModel extends Model{
 			$query[]	= "FROM `".TBL_PHONE."` AS `b`, `".TBL_CATEGORYPHONE."` AS `c`";
 			$query[]	= "WHERE `b`.`status`  = 1 AND `b`.`special` = 1 AND `c`.`id` = `b`.`category_phone_id`";
 			$query[]	= "ORDER BY `id` DESC";
+			$query[]	= "LIMIT 0, 8";
+		
+			$query		= implode(" ", $query);
+			$result		= $this->fetchAll($query);
+			return $result;
+		}
+		if($option['task'] == 'phone-sales'){
+			$query[]	= "SELECT `b`.`id`, `b`.`name`,`b`.`sale_off`, `b`.`picture`, `b`.`price`, `b`.`description`, `b`.`category_phone_id`, `c`.`name` AS `category_name`";
+			$query[]	= "FROM `".TBL_PHONE."` AS `b`, `".TBL_CATEGORYPHONE."` AS `c`";
+			$query[]	= "WHERE `b`.`status`  = 1 AND `b`.`special` = 1 AND `c`.`id` = `b`.`category_phone_id`";
+			$query[]	= "ORDER BY `sale_off` ASC";
 			$query[]	= "LIMIT 0, 8";
 		
 			$query		= implode(" ", $query);

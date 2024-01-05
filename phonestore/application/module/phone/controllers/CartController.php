@@ -16,12 +16,14 @@ class CartController extends Controller
 	public function detailAction()
 	{
 		$this->_view->_title = 'Info phone';
+		$this->_view->categoryName 	= $this->_model->infoItem($this->_arrParam, array('task' => 'get-cat-name'));
 		$this->_view->render('cart/detail', true, ['slider' => false, 'banner' => false, 'breadcrumb' => true]);
 	}
 
 	// ACTION: ADD CART
 	public function addAction()
 	{
+		
 		if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
 			$_SESSION['cart'] = [];
 		}
@@ -41,7 +43,7 @@ class CartController extends Controller
 			$product['num'] = $this->_arrParam['num'];
 			$_SESSION['cart'][] = $product;
 		}
-
+		
 	}
 
 	//ACTION: UPDATE CART

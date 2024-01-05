@@ -35,7 +35,7 @@ if (!empty($this->Items)) {
         $price = $value['price'];
         $phoneNameURL = URL::filterURL($name);
         $catNameURL = URL::filterURL($this->categoryName);
-
+        $linkzoom	= URL::createLink('phone', 'phone', 'quickView', array('phone_id' => $value['id']));
         $link = URL::createLink('phone', 'phone', 'detail', array('category_phone_id' => $value['category_phone_id'], 'phone_id' => $value['id']), "$catNameURL/$phoneNameURL-$catID-$phoneID.html");
 
         $description = substr($value['description'], 0, 200);
@@ -50,8 +50,8 @@ if (!empty($this->Items)) {
 					</a>
 					<div class="product_action_box">
 						<ul class="list_none pr_action_btn">
-							<li class="add-to-cart"><a href="' . $link . '"><i class="icon-basket-loaded"></i> Chọn Mua</a></li>
-							<li><a href="shop-quick-view.php" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
+							<li class="add-to-cart"><a href="#" onclick="addCart('. $phoneID .', 1)" ><i class="icon-basket-loaded"></i> Chọn Mua</a></li>
+							<li><a href="'.$linkzoom.'" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
 							<li><a href="#"><i class="icon-heart"></i></a></li>
 						</ul>
 					</div>

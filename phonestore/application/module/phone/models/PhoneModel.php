@@ -2,7 +2,7 @@
 class PhoneModel extends Model
 {
 
-	private $_columns = array('id', 'name', 'description', 'price', 'sale_off', 'picture', 'created', 'created_by', 'modified', 'modified_by', 'status', 'ordering', 'category_id');
+	private $_columns = array('id', 'name', 'description', 'price', 'sale_off', 'picture', 'created', 'created_by', 'modified', 'modified_by', 'status', 'ordering', 'category_phone_id');
 	private $_userInfo;
 
 	public function __construct()
@@ -66,7 +66,7 @@ class PhoneModel extends Model
 				$query[] = "AND `sale_off` >= " . $arrParam['price_first'];
 				$query[] = "AND `sale_off` <= " . $arrParam['price_second'];
 			}
-			
+
 			//$query[]	= "ORDER BY `name` ASC";
 			if (isset($arrParam['filter_order'])) {
 				switch ($arrParam['filter_order']) {
@@ -85,7 +85,7 @@ class PhoneModel extends Model
 
 			}
 
-			
+
 
 			// PAGINATION
 			$pagination = $arrParam['pagination'];
@@ -95,9 +95,7 @@ class PhoneModel extends Model
 				$query[] = "LIMIT $position, $totalItemsPerPage";
 			}
 			$query = implode(" ", $query);
-			echo '<pre style="color:red">';
-			print_r($query);
-			echo '</pre>';
+
 			$result = $this->fetchAll($query);
 			return $result;
 		}
@@ -112,6 +110,28 @@ class PhoneModel extends Model
 			$query[] = "ORDER BY `b`.`ordering` ASC";
 
 			$query = implode(" ", $query);
+			$result = $this->fetchAll($query);
+			return $result;
+		}
+
+		if ($option['task'] == 'search') {
+			if (isset($arrParam['filter_search'])) {
+				$keyword = '"%' . $arrParam['filter_search'] . '%"';
+				$query[] = "SELECT `p`.`id` AS `id`, `p`.`name` AS `name`, `p`.`picture` AS `picture`, `p`.`description` AS `description` ,`p`.`price` AS `price` ,`p`.`sale_off` AS `sale_off`, `p`.`category_phone_id` AS `category_phone_id`, `c`.`name` AS `category_name`";
+				$query[] = "FROM `$this->table` AS `p`,  `" . TBL_CATEGORYPHONE . "` AS `c`";
+				$query[] = "WHERE `p`.`category_phone_id` = `c`.`id`";
+				$query[] = "AND `p`.`name` LIKE $keyword";
+			}
+
+			// PAGINATION
+			$pagination = $arrParam['pagination'];
+			$totalItemsPerPage = $pagination['totalItemsPerPage'];
+			if ($totalItemsPerPage > 0) {
+				$position = ($pagination['currentPage'] - 1) * $totalItemsPerPage;
+				$query[] = "LIMIT $position, $totalItemsPerPage";
+			}
+			$query = implode(" ", $query);
+			
 			$result = $this->fetchAll($query);
 			return $result;
 		}

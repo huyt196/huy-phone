@@ -1,5 +1,11 @@
 <?php
+$xhtmlProductSaleOff = HelperFrontend::createHTMLProductHome($this->salesPhone);
 
+
+?>
+
+
+<?php
 // Slider-product-home
 $slider_home_list = '';
 if(!empty($this->specialPhone)){
@@ -35,8 +41,8 @@ foreach($this->specialPhone as $key => $value){
         <div class="product_info">
             <h6 class="product_title"><a href="'.$link.'">'.$name.'</a></h6>
             <div class="product_price">
-                <span class="price">'.$price.'đ</span>
-                <del>'.$saleOff.'đ</del>
+                <span class="price">'.$saleOff.'đ</span>
+                <del>'.$price.'đ</del>
                 <!-- <div class="on_sale">
                     <span>Tiết kiệm: 35%</span>
                 </div> -->
@@ -87,8 +93,8 @@ foreach($this->newPhone as $key => $value){
         <div class="product_info">
             <h6 class="product_title"><a href="'. $link.'">'.$name.'</a></h6>
             <div class="product_price">
-                <span class="price">'.$price.'đ</span>
-                <del>'.$saleOff.'đ</del>
+                <span class="price">'.$saleOff.'đ</span>
+                <del>'.$price.'đ</del>
                 <!-- <div class="on_sale">
                     <span>-35%</span>
                 </div> -->
@@ -120,7 +126,7 @@ foreach($this->specialPhone as $key => $value){
     $sourcePicture 		= $value['picture'];
     $uploadFolder ='phone';
     
-    $link	= URL::createLink('phone', 'phone', 'detail', array('category_phone_id' => $value['category_phone_id'],'phone_id' => $value['id']), "$catNameURL/$phoneNameURL-$catID-$phoneID.html");
+    $link	= URL::createLink('phone', 'phone', 'detail', array('category_phone_id' => $value['category_phone_id'],'phone_id' => $value['id']), "$catNameURL/$phoneNameURL-$category_phone-$phoneID.html");
     $picture = '<img src="' . UPLOAD_URL . $uploadFolder . '/' . $sourcePicture . '" alt="' . $name . '">';
     $price = number_format($value['price'], 0, ",", ".");
  
@@ -142,8 +148,8 @@ foreach($this->specialPhone as $key => $value){
         <div class="product_info">
             <h6 class="product_title"><a href="'. $link.'">'.$name.'</a></h6>
             <div class="product_price">
-                <span class="price">'.$price.'</span>
-                <del>'.$saleOff.'đ</del>
+                <span class="price">'.$saleOff.'</span>
+                <del>'.$price.'đ</del>
                 <!-- <div class="on_sale">
                     <span>-35%</span>
                 </div> -->
@@ -202,7 +208,9 @@ foreach($this->specialPhone as $key => $value){
                         </div>
                         <div class="tab-pane fade" id="special" role="tabpanel" aria-labelledby="special-tab">
                             <div class="row shop_container">
-                            <div style="text-align:center" class="loading"></div>
+                            <?php
+                             echo $xhtmlProductSaleOff;
+                                    ?>
                             </div>
                         </div>
                     </div>

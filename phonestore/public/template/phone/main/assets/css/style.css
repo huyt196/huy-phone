@@ -543,7 +543,7 @@ button:focus {
 	color: #FF324D !important;
 }
 .bg_default {
-	background-color: #FF324D !important;
+	background-color:#3257ff !important;
 }
 .bg_gray {
 	background-color: #f7f8fb !important;
@@ -1523,11 +1523,17 @@ button:focus {
 	position: static;
 }
 .navbar .navbar-nav li.dropdown-mega-menu .dropdown-menu {
-	margin-left: 57%;
+	margin-left: 6%;
 	width: 15%;
 	right: 0;
 	padding-left: 0;
 	padding-right: 0;
+}
+.menu-dropdown-1{
+	width: 25%;
+	left: 50%;
+	transform: translateX(50%);
+	top: 98%;
 }
 .mega-menu-col {
 	border-right: 1px solid #ddd;
@@ -2762,7 +2768,7 @@ input.text {
 }
 .carousel-control-next:hover, .carousel-control-prev:hover,
 .light_arrow .carousel-control-next:hover, .light_arrow .carousel-control-prev:hover{
-	background-color: #FF324D;
+	background-color: #3257ff;
 	color: #fff;
 }
 .indicators_style1,
@@ -4380,7 +4386,7 @@ footer .widget_title {
 }
 .contact_icon i {
 	font-size: 34px;
-	color: #FF324D;
+	color: #007bff;
 }
 .contact_text span {
 	color: #333;
@@ -4441,7 +4447,7 @@ footer .widget_title {
 	border-radius: 10px;
 }
 .contact_style3 .contact_icon {
-	border: 1px solid #FF324D;
+	border: 1px solid #007bff;
 	margin: 0 0 5px;
 	height: 80px;
 	width: 80px;
@@ -5205,7 +5211,7 @@ footer .widget_title {
 	padding: 15px;
 }
 .price {
-	color: #FF324D;
+	color: #17a2b8;
 	font-weight: 600;
 }
 .product_price del {
@@ -5298,6 +5304,7 @@ footer .widget_title {
 .product_img {
 	position: relative;
 	overflow: hidden;
+	width: 200px;
 }
 .product_img::before {
 	content: "";
@@ -5626,11 +5633,11 @@ footer .widget_title {
     margin-left: 15px;
 	vertical-align: middle;
 }
-.product_gallery_item a {
+/* .product_gallery_item a {
 	border: 1px solid #ddd;
 	display: block;
 	padding: 5px;
-}
+} */
 .product-meta li {
     list-style: none;
 	margin-top: 10px;
@@ -5649,9 +5656,9 @@ footer .widget_title {
 	margin-right: -5px;
 	margin-left: -5px;
 }
-.product_gallery_item a.active {
+/* .product_gallery_item a.active {
     border-color: #FF324D;
-}
+} */
 .vertical_gallery #pr_item_gallery {
 	width: 15%;
 	float: left;

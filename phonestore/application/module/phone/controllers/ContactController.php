@@ -46,7 +46,7 @@ class ContactController extends Controller
 		
 		$this->_view->_title = 'My Contact';
 		$this->_view->name_page = "Liên hệ";
-		$this->_view->menu_active = "about";
+		$this->_view->menu_active = "contact";
 		$this->_view->render('contact/index', true, ['slider' => false, 'banner' => false, 'info' => false, 'breadcum' => true]);
 	}
 }

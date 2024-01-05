@@ -44,7 +44,7 @@ $nameURL2		= URL::filterURL($data['0']['name']);
             <div class="row">
                 <div class="col-lg-6">
                     <div class="banner_content overflow-hidden">
-                        <h5 style="color:white;" class="mb-3 staggered-animation font-weight-light" data-animation="slideInLeft" data-animation-delay="0.5s"><?php echo $title2 ?></h5>
+                        <h5 style="color:#8d5111;" class="mb-3 staggered-animation font-weight-light" data-animation="slideInLeft" data-animation-delay="0.5s"><?php echo $title2 ?></h5>
                         <h2 style="color:#17a2b8;" class="staggered-animation" data-animation="slideInLeft" data-animation-delay="1s"><?php echo $description2  ?></h2>
                         <a class="btn btn-fill-out rounded-0 staggered-animation text-uppercase" href="<?php echo $link2  ?>" data-animation="slideInLeft" data-animation-delay="1.5s">Shop Now</a>
                     </div>

@@ -18,10 +18,13 @@ class CartModel extends Model
 
 	public function infoItem($arrParam, $option = null)
 	{
+
+
 		$query = "SELECT * FROM `$this->table`";
 		$query .= " WHERE `id` = '" . $arrParam['id'] . "'";
 		$result = $this->fetchRow($query);
 		return $result;
+	
 	}
 
 	public function insertOrder($arrParam, $option = null)

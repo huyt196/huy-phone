@@ -14,6 +14,7 @@ class PhoneController extends Controller{
 
 		$this->_view->_title 		= 'List Phone';
 		$this->_view->_jsFile 		= 'custom.js';
+		$this->_view->menu_active		= 'list';
 		$this->_view->categoryName 	= $this->_model->infoItem($this->_arrParam, array('task' => 'get-cat-name'));
 	
 		$this->_view->name_page = $this->_model->infoItem($this->_arrParam, array('task' => 'get-cat-name'));
@@ -34,8 +35,12 @@ class PhoneController extends Controller{
 	// ACTION: DETAIL BOOK
 	public function detailAction(){
 		$this->_view->_title 		= 'Info phone';
+
+
  		$this->_view->phoneInfo 		= $this->_model->infoItem($this->_arrParam, array('task' => 'phone-info'));
 		 $this->_view->name_page = $this->_view->phoneInfo['name'];
+		 $this->_view->category_name = $this->_view->phoneInfo['category_name'];
+		 $this->_view->category_id = $this->_view->phoneInfo['category_phone_id'];
 		 $this->_view->phoneRelate	= $this->_model->listItem($this->_arrParam, array('task' => 'phone-relate'));
 		$this->_view->render('phone/detail', true, ['breadcum' => true]);
 	}
@@ -51,5 +56,20 @@ class PhoneController extends Controller{
 	public function relateAction(){
 		$this->_view->phoneRelate	= $this->_model->listItem($this->_arrParam, array('task' => 'phone-relate'));
 		$this->_view->render('phone/detail', false);
+	}
+
+	// ACTION: SEARCH PHONE
+	public function searchAction(){
+		//$this->_view->keySearch = $this->_arrParam['key_search_phone'];
+		// $this->_view->categoryName 	= $this->_model->infoItem($this->_arrParam, array('task' => 'get-cat-name'));
+		$totalItems = $this->_model->countItem($this->_arrParam, ['search' => true]);
+		$configPagination = array('totalItemsPerPage' => 9, 'pageRange' => 3);
+		
+		
+		$this->setPagination($configPagination);
+		$this->_view->pagination = new Pagination($totalItems, $this->_pagination);
+		$this->_view->Items = $this->_model->listItem($this->_arrParam, array('task' => 'search'));
+		$this->_view->name_page = "Tìm kiếm sản phẩm";
+		$this->_view->render('phone/search', true, ['breadcum' => true]);
 	}
 }

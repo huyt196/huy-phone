@@ -50,7 +50,9 @@
 
 <?php 
 	$phoneInfo	= $this->phoneInfo;
-
+    $id = $phoneInfo['id']; 
+    $categoryName = $this->phoneInfo['category_name'];
+    $categoryID = $this->phoneInfo['category_phone_id'];
 	$name		= $phoneInfo['name'];
 	$uploadFolder ='phone';
 	$sourcePicture = $phoneInfo['picture'];
@@ -66,8 +68,8 @@
 	}
 	$description	= substr($phoneInfo['description'], 0, 400);
 	$priceReal 		= 0;
-    $price = number_format($value['price']);
-    $saleOff = number_format($value['sale_off']);
+    $price = number_format($phoneInfo['price']);
+    $saleOff = number_format($phoneInfo['sale_off']);
 	$linkOrder			= URL::createLink('phone', 'user', 'order', array('phone_id' => $phoneInfo['id'], 'price' => $priceReal));
 	
     $linkRelatePhone	= URL::createLink('phone', 'phone', 'relate', array('phone_id' => $phoneInfo['id'], 'category_phone_id' => $phoneInfo['category_phone_id']));
@@ -102,7 +104,7 @@
                                 <div id="pr_item_gallery" class="product_gallery_item slick_slider" data-slides-to-show="4" data-slides-to-scroll="1" data-infinite="false">
                                     <div class="item">
                                         <a href="#" class="product_gallery_item active" data-image="<?php echo $file_product  ?>" data-zoom-image="<?php echo $file_product  ?>">
-										<?php echo $picture;?>
+									
                                         </a>
                                     </div>
                                     
@@ -114,8 +116,8 @@
                                 <div class="product_description">
                                     <h4 class="product_title"><a href="#"><?php echo $name;?></a></h4>
                                     <div class="product_price">
-                                        <span class="price"><?php echo $price;?></span>
-                                        <del><?php    echo $saleOff      ?></del>
+                                        <span class="price"><?php  echo $saleOff;  ?></span>
+                                        <del><?php  echo $price;  ?></del>
                                         <!-- <div class="on_sale">
                                             <span>Tiết kiệm: 35%</span>
                                         </div> -->
@@ -144,14 +146,14 @@
                                 <hr />
                                 <div class="cart_extra">
                                     <div class="cart-product-quantity">
-                                        <div class="quantity">
-                                            <input type="button" value="-" class="minus">
-                                            <input type="text" name="quantity" value="1" title="Qty" class="qty" size="4">
-                                            <input type="button" value="+" class="plus">
-                                        </div>
+                                    <div class="quantity">
+                                        <input type="button" value="-" class="minus">
+                                        <input type="text" name="num" value="1" title="Qty" class="qty" size="4" onchange="fixCartNum()">
+                                        <input type="button" value="+" class="plus">
+                                    </div>
                                     </div>
                                     <div class="cart_btn">
-                                        <button class="btn btn-fill-out btn-addtocart" type="button"><i class="icon-basket-loaded"></i>Chọn mua</button>
+                                        <button class="btn btn-fill-out btn-addtocart" type="button" onclick="addCart(<?=$id?>, $('[name=num]').val())" ><i class="icon-basket-loaded"></i>Chọn mua</button>
                                         <!-- <a class="add_compare" href="#"><i class="icon-shuffle"></i></a>
                                         <a class="add_wishlist" href="#"><i class="icon-heart"></i></a> -->
                                     </div>

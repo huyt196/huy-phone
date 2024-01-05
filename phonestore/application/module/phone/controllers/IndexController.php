@@ -14,10 +14,12 @@ class IndexController extends Controller{
 	}
 	
 	public function indexAction(){
-		$this->_view->_title	= 'Phone Store';
 		
+		$this->_view->_title	= 'Phone Store';
+		$this->_view->menu_active		= 'home';
 		$this->_view->specialPhone	= $this->_model->listItem($this->_arrParam, array('task' => 'phone-special'));
 		$this->_view->newPhone		= $this->_model->listItem($this->_arrParam, array('task' => 'phone-new'));
+		$this->_view->salesPhone		= $this->_model->listItem($this->_arrParam, array('task' => 'phone-sales'));
 		$this->_view->categoryPhone		= $this->_model->listItem($this->_arrParam, array('task' => 'category-list'));
 		$this->_view->menus = $this->_model->listItem($this->_arrParam, array('task' => 'category-phone', 'table' => 'menu'));
 	

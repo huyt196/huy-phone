@@ -13,6 +13,7 @@
 						array('link' => URL::createLink('admin', 'menu', 'index')		, 'name' => 'Menu manager'		, 'image' => 'icon-48-article'),
 						array('link' => URL::createLink('admin', 'slider', 'index')		, 'name' => 'Slider manager'		, 'image' => 'icon-48-article'),
 						array('link' => URL::createLink('admin', 'rss', 'index')		, 'name' => 'Rss manager'		, 'image' => 'icon-48-article'),
+						array('link' => URL::createLink('admin', 'blog', 'index')		, 'name' => 'Blog manager'		, 'image' => 'icon-48-article'),
 						array('link' => URL::createLink('admin', 'experience', 'index')		, 'name' => 'Experience manager'		, 'image' => 'icon-48-inbox'),
 					);
 	foreach($arrMenu as $key => $value){

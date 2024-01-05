@@ -64,10 +64,10 @@ $categoryID = $this->phoneInfo['category_phone_id'];
                         </a></h4>
                     <div class="product_price">
                         <span class="price">
-                            <?=  $price ?>đ
+                            <?=    $saleOff?>đ
                         </span>
                         <del>
-                            <?=  $saleOff?>đ
+                            <?= $price?>đ
                         </del>
                         <!-- <div class="on_sale">
                            <span>Tiết kiệm: 41%</span>

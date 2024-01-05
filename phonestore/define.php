@@ -39,6 +39,7 @@
 	define ('TBL_BOOK'			, 'book');
 	define ('TBL_SLIDER'		, 'slider');
 	define ('TBL_PHONE'			, 'phone');
+	define ('TBL_BLOG'			, 'blog');
 	define ('TBL_ORDER'			, 'orders');
 	define ('TBL_ORDER_DETAIL'	, 'order_details');
 	define ('TBL_ORDER_STATUS'	, 'order_status');

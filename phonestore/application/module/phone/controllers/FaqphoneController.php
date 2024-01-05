@@ -12,9 +12,10 @@ class FaqphoneController extends Controller{
 	// ACTION: LIST BOOK
 	public function listAction(){
 		$this->_view->_title 		= 'FAQ';
+		$this->_view->menu_active		= 'faq';
 		$this->_view->Items	 		= $this->_model->listItem($this->_arrParam, array('task' => 'faq-phone'));
 		$this->_view->name_page = "Câu Hỏi Thường gặp ?";
-		$this->_view->menu_active = "faqphone";
+
 		$this->_view->render('faqphone/index', true, ['slider' => false, 'banner' => false, 'info' => true, 'breadcum' => true]);
 	}
 	

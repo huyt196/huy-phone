@@ -19,9 +19,9 @@ $nameURL1		= URL::filterURL($data['0']['name']);
                 <div class="single_banner">
                 <img src="<?=TEMPLATE_URL?>phone/main/assets/images/iphone-12-pro111.jpg" alt="shop_banner_img1"/>
                     <div class="single_banner_info">
-                        <h5 style="color:red;" class="single_bn_title1">Hot</h5>
-                        <h3 style="color:white;" class="single_bn_title">Bộ sưu tập mới</h3>
-                        <a style="color:white;" href="<?php echo  $link1  ?>" class="single_bn_link">Xem ngay</a>
+                        <h5 style="color:#212529;" class="single_bn_title1">Hot</h5>
+                        <h3 style="color:#212529;" class="single_bn_title">Điện thoại mới!</h3>
+                        <a style="color:#212529;" href="<?php echo  $link1  ?>" class="single_bn_link">Xem ngay</a>
                     </div>
                 </div>
             </div>
@@ -29,9 +29,9 @@ $nameURL1		= URL::filterURL($data['0']['name']);
                 <div class="single_banner">
                 <img src="<?=TEMPLATE_URL?>phone/main/assets/images/iPhone-14-Promax.jpg" alt="shop_banner_img2"/>
                     <div class="single_banner_info">
-                        <h3 style="color:green;" class="single_bn_title">Bộ sưu tập hè</h3>
-                        <h4 style="color:white;" class="single_bn_title1">Giảm tới 40%</h4>
-                        <a style="color:white;" href="<?php echo  $link1  ?>" class="single_bn_link">Xem ngay</a>
+                        <h3 style="color:#212529;" class="single_bn_title">FLASH SALE</h3>
+                        <h4 style="color:#212529;" class="single_bn_title1">Giảm tới 40%</h4>
+                        <a style="color:#212529;" href="<?php echo  $link1  ?>" class="single_bn_link">Xem ngay</a>
                     </div>
                 </div>
             </div>

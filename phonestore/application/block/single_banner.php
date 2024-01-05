@@ -21,8 +21,8 @@ $nameURL1		= URL::filterURL($data['0']['name']);
                     <div class="medium_divider d-none d-md-block clearfix"></div>
                     <div class="trand_banner_text text-center text-md-left">
                         <div class="heading_s1 mb-3">
-                            <span class="sub_heading">Xu hướng điện thoại hè!</span>
-                            <h2>Bộ sưu tập hè</h2>
+                            <span style="color:#17a2b8" class="sub_heading">Xu hướng điện thoại giới trẻ!</span>
+                            <h2>Nhanh tay sở hữu</h2>
                         </div>
                         <h5 class="mb-4">Tưng bừng mua sắm, Nhận quà liền tay</h5>
                         <a href="<?php echo  $link1  ?>" class="btn btn-fill-out rounded-0">Xem ngay</a>

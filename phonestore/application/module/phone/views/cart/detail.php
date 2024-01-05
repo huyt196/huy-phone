@@ -4,6 +4,12 @@ $xhtmlCartItems = '';
 if (!empty($Items)) {
     $total = 0;
     foreach ($Items as $Item) {
+        $query = "SELECT `name` FROM `" . TBL_CATEGORYPHONE . "` WHERE `id` = '" . $Item['category_phone_id'] . "'";
+		$data	= $model->fetchAll($query);
+		$namelink = implode("", $data['0']);
+        $phoneNameURL = URL::filterURL($name);
+        $catNameURL = URL::filterURL($namelink);
+        $link = URL::createLink('phone', 'phone', 'detail', array('category_phone_id' => $value['category_phone_id'], 'phone_id' => $value['id']), "$catNameURL/$phoneNameURL-$catID-$phoneID.html");
         $id = $Item['id'];
         $name = $Item['name'];
         $quantity = $Item['num'];
@@ -15,10 +21,10 @@ if (!empty($Items)) {
         $saleOff = number_format($Item['sale_off'], 0, ',', '.');
         $totalOneProduct = number_format($totalOneProduct, 0, ',', '.');
         $xhtmlCartItems .= '<tr>
-                                    <td class="product-thumbnail"><a href="detail-product-' . $id . '.html">
+                                    <td class="product-thumbnail"><a href="'.$link.'">
                                     <img src="' . UPLOAD_URL . 'phone/' . $picture . '" alt="' . $name . '">
                                     </a></td>
-                                    <td class="product-name" data-title="Product"><a href="detail-product-' . $id . '.html">' . $name . '</a></td>
+                                    <td class="product-name" data-title="Product"><a href="'.$link.'">' . $name . '</a></td>
                                     <td class="product-price" data-title="Price">' . $saleOff . 'đ</td>
                                     <td class="product-quantity" data-title="Quantity">
                                         <div class="quantity">

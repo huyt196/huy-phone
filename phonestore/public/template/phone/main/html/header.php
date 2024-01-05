@@ -1,3 +1,23 @@
+<?php
+
+	$model 	= new Model();
+	$query	="SELECT `id`, `name`, `picture` FROM `".TBL_CATEGORYPHONE."` WHERE `status`  = 1 ORDER BY `id` ASC";
+    $data	= $model->fetchAll($query);
+    $categorysamsungName    = $data[1]['name'];
+    $categorysamsungID    = $data[1]['id'];
+    $categoryiphoneName    = $data[0]['name'];
+    $categoryiphoneID    = $data[0]['id'];
+    $categorypkiphoneName    = $data[2]['name'];
+    $categorypkiphoneID    = $data[2]['id'];
+
+
+
+    $link	 		= URL::createLink('phone', 'phone', 'list', array('category_id' => $id), "$nameURL-$id.html");
+    $linkHome		= URL::createLink('phone', 'phone', 'index', null, 'home.html');
+    $linkAbout		= URL::createLink('phone', 'phone', 'index', null, 'about.html');
+    $linkSearch		= URL::createLink('phone', 'phone', 'search', null, 'search.html');
+
+?>
 
 <header class="header_wrap fixed-top header_with_topbar">
     <div class="bottom_header dark_skin main_menu_uppercase">
@@ -13,20 +33,19 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <ul class="navbar-nav">
                         <li>
-                            <a class="nav-link nav_item <?php if($menu_active=="home") echo "active"; ?>" href="home.html">Trang chủ</a>
+                            <a class="nav-link nav_item <?php if ($this->menu_active == "home"){echo "active";}?>"  href="<?php echo $linkHome ?>">Trang chủ</a>
                         </li>
                         <li>
-                            <a class="nav-link nav_item <?php if($menu_active=="about") echo "active"; ?>" href="about.html">Giới thiệu</a>
+                            <a class="nav-link nav_item <?php if ($this->menu_active == "about"){echo "active";}?>" href="<?php echo $linkAbout  ?>">Giới thiệu</a>
                         </li>
                         <li class="dropdown dropdown-mega-menu">
-                            <a class="dropdown-toggle nav-link <?php if($menu_active=="listproduct") echo "active"; ?>" href="#" data-toggle="dropdown">Điện Thoại</a>
-                            <div class="dropdown-menu">
+                            <a class="dropdown-toggle nav-link <?php if ($this->menu_active == "list"){echo "active";}?>" href="#" data-toggle="dropdown">Điện Thoại</a>
+                            <div class="dropdown-menu menu-dropdown-1">
                                 <ul class="mega-menu d-lg-flex">
                                     <li class="mega-menu-col col-lg-3">
                                         <ul>
-                                            <li class="dropdown-header">Các mẫu điện thoại</li>
+                                            <!-- <li class="dropdown-header">Các mẫu điện thoại</li> -->
                                             <?php include_once BLOCK_PATH . 'categoryphone.php';?>
-                                        
                                         </ul>
                                     </li>
                    
@@ -65,28 +84,26 @@
                                 </div> -->
                             </div>
                         </li>
-                        <li class="dropdown dropdown-mega-menu">
-                            <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">Phụ kiện</a>
+                        <!-- <li class="dropdown dropdown-mega-menu">
+                            <a  class="dropdown-toggle nav-link <?php if ($this->menu_active == "listpk"){echo "active";}?>" href="#" data-toggle="dropdown">Phụ kiện</a>
                             <div class="dropdown-menu">
                                 <ul class="mega-menu d-lg-flex">
                                     <li class="mega-menu-col col-lg-12">
                                         <ul class="d-lg-flex">
                                             <li class="mega-menu-col col-lg-3">
-                                            <div style="text-align:center" class="loading"></div>
-                                                <!-- <ul>
-                                                    <li class="dropdown-header">Phụ Kiện Nữ</li>
-                                                    <li><a class="dropdown-item nav-link nav_item" href="list-product.php">Ba lô</a></li>
-                                                    <li><a class="dropdown-item nav-link nav_item" href="list-product.php">Túi xách </a></li>
-                                                    <li><a class="dropdown-item nav-link nav_item" href="list-product.php">Thắt lưng</a></li>
-                                                    <li><a class="dropdown-item nav-link nav_item" href="list-product.php">Phụ kiện khác</a></li>
-                                                </ul> -->
+                                      
+                                                <ul>
+                                                    <li class="dropdown-header">Các loại Phụ kiện</li>
+                                                    <?php include_once BLOCK_PATH . 'categoryphone2.php';?>
+                
+                                                </ul>
                                             </li>
                                           
                                         
                                           
                                         </ul>
                                     </li>
-                                    <!-- <li class="mega-menu-col col-lg-3">
+                                    <li class="mega-menu-col col-lg-3">
                                         <div class="header_banner">
                                             <div class="header_banner_content">
                                                 <div class="shop_banner">
@@ -101,17 +118,17 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </li> -->
+                                    </li>
                                 </ul>
                             </div>
+                        </li> -->
+                        <li>
+                            <a class="nav-link nav_item <?php if ($this->menu_active == "blog"){echo "active";}?>" href="blog.html">Blog</a>
                         </li>
                         <li>
-                            <a class="nav-link nav_item <?php if($menu_active=="listarticle"||$menu_active=="detail-article") echo "active"; ?>" href="blog.html">Blog</a>
+                            <a class="nav-link nav_item <?php if ($this->menu_active == "faq"){echo "active";}?>" href="faq.html">FAQ</a>
                         </li>
-                        <li>
-                            <a class="nav-link nav_item <?php if($menu_active=="about") echo "active"; ?>" href="faq.html">FAQ</a>
-                        </li>
-                        <li><a class="nav-link nav_item <?php if($menu_active=="contact") echo "active"; ?>" href="contact.html">Liên hệ</a></li>
+                        <li><a class="nav-link nav_item <?php if ($this->menu_active == "contact"){echo "active";}?>" href="contact.html">Liên hệ</a></li>
                     </ul>
                 </div>
                 <ul class="navbar-nav attr-nav align-items-center">
@@ -119,8 +136,8 @@
                         <a href="javascript:void(0);" class="nav-link search_trigger"><i class="linearicons-magnifier"></i></a>
                         <div class="search_wrap">
                             <span class="close-search"><i class="ion-ios-close-empty"></i></span>
-                            <form>
-                                <input type="text" placeholder="Nhập sản phẩm bạn cần mua" class="form-control" id="search_input">
+                            <form method="post" action="<?=$linkSearch?>">
+                                <input type="text" placeholder="Nhập sản phẩm bạn cần mua" class="form-control" id="search_input" name="filter_search">
                                 <button type="submit" class="search_icon"><i class="ion-ios-search-strong"></i></button>
                             </form>
                         </div>

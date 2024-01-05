@@ -19,7 +19,11 @@ RewriteRule		history.html 		index.php?module=default&controller=user&action=hist
 
 RewriteRule     basket.html         index.php?module=phone&controller=cart&action=detail
 RewriteRule     checkout.html       index.php?module=phone&controller=cart&action=checkout
+RewriteRule     search.html         index.php?module=phone&controller=phone&action=search
+
 RewriteRule		([A-Za-z0-9_-]+)-([0-9]+)\.html 		index.php?module=phone&controller=phone&action=list&category_phone_id=$2
+
 RewriteRule		([A-Za-z0-9_-]+)/([A-Za-z0-9_-]+)-([0-9]+)-([0-9]+)\.html 		index.php?module=phone&controller=phone&action=detail&category_phone_id=$3&phone_id=$4
-RewriteRule		detail-product-([0-9]+)\.html 	                                index.php?module=shop&controller=phone&action=detail&phone_id=$4
-RewriteRule     detail-product/quick-view-([0-9]+)\.html                        index.php?module=shop&controller=phone&action=quickView&phone_id=$4
+RewriteRule		detail-phone-([0-9]+)\.html 	                                index.php?module=phone&controller=phone&action=detail&phone_id=$1
+RewriteRule     detail-phone/quick-view-([0-9]+)\.html                        index.php?module=shop&controller=phone&action=quickView&phone_id=$4
+RewriteRule		list-phone-([0-9]+)\.html 	        index.php?module=phone&controller=phone&action=list&category_phone_id=$1
