@@ -16,19 +16,19 @@ class ArticleController extends Controller{
 		$this->_view->Items	 		= $this->_model->listItem($this->_arrParam, array('task' => 'blog-in-cat'));
 		$this->_view->name_page = "Blog";
 		$this->_view->menu_active = "blog";
-		$this->_view->render('article/index', true, ['slider' => false, 'banner' => false, 'info' => false, 'breadcum' => true]);
+		$this->_view->render('article/list', true, ['slider' => false, 'banner' => false, 'info' => false, 'breadcum' => true]);
 	}
 	
 // ACTION: DETAIL BLOG
 public function detailAction(){
 	$this->_view->_title 		= 'Info Blog';
 
-
-	 $this->_view->phoneInfo 		= $this->_model->infoItem($this->_arrParam, array('task' => 'blog-info'));
-	 $this->_view->name_page = $this->_view->phoneInfo['name'];
-	 $this->_view->category_name = $this->_view->phoneInfo['category_name'];
-	 $this->_view->category_id = $this->_view->phoneInfo['category_phone_id'];
-	// $this->_view->phoneRelate	= $this->_model->listItem($this->_arrParam, array('task' => 'phone-relate'));
+	$this->_view->menu_active = "blog";
+	 $this->_view->blogInfo 		= $this->_model->infoItem($this->_arrParam, array('task' => 'blog-info'));
+	 $this->_view->name_page = $this->_view->blogInfo['name'];
+	 $this->_view->category_name = $this->_view->blogInfo['category_name'];
+	 $this->_view->category_id = $this->_view->blogInfo['category_phone_id'];
+	 $this->_view->blogRelate	= $this->_model->listItem($this->_arrParam, array('task' => 'blog-relate'));
 	$this->_view->render('article/detail', true, ['breadcum' => true]);
 }
 

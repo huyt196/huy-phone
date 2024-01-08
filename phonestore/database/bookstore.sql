@@ -2,10 +2,10 @@
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jan 05, 2024 at 11:06 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.2.31
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th1 08, 2024 lúc 09:31 AM
+-- Phiên bản máy phục vụ: 10.4.11-MariaDB
+-- Phiên bản PHP: 7.2.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `bookstore`
+-- Cơ sở dữ liệu: `bookstore`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `blog`
+-- Cấu trúc bảng cho bảng `blog`
 --
 
 CREATE TABLE `blog` (
@@ -42,7 +42,7 @@ CREATE TABLE `blog` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `blog`
+-- Đang đổ dữ liệu cho bảng `blog`
 --
 
 INSERT INTO `blog` (`id`, `name`, `description`, `picture`, `created`, `created_by`, `modified`, `modified_by`, `status`, `ordering`, `category_phone_id`) VALUES
@@ -57,7 +57,7 @@ INSERT INTO `blog` (`id`, `name`, `description`, `picture`, `created`, `created_
 -- --------------------------------------------------------
 
 --
--- Table structure for table `book`
+-- Cấu trúc bảng cho bảng `book`
 --
 
 CREATE TABLE `book` (
@@ -78,7 +78,7 @@ CREATE TABLE `book` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `book`
+-- Đang đổ dữ liệu cho bảng `book`
 --
 
 INSERT INTO `book` (`id`, `name`, `description`, `price`, `special`, `sale_off`, `picture`, `created`, `created_by`, `modified`, `modified_by`, `status`, `ordering`, `category_id`) VALUES
@@ -99,7 +99,7 @@ INSERT INTO `book` (`id`, `name`, `description`, `price`, `special`, `sale_off`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cart`
+-- Cấu trúc bảng cho bảng `cart`
 --
 
 CREATE TABLE `cart` (
@@ -115,7 +115,7 @@ CREATE TABLE `cart` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `cart`
+-- Đang đổ dữ liệu cho bảng `cart`
 --
 
 INSERT INTO `cart` (`id`, `username`, `books`, `prices`, `quantities`, `names`, `pictures`, `status`, `date`) VALUES
@@ -132,7 +132,7 @@ INSERT INTO `cart` (`id`, `username`, `books`, `prices`, `quantities`, `names`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category`
+-- Cấu trúc bảng cho bảng `category`
 --
 
 CREATE TABLE `category` (
@@ -148,7 +148,7 @@ CREATE TABLE `category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `category`
+-- Đang đổ dữ liệu cho bảng `category`
 --
 
 INSERT INTO `category` (`id`, `name`, `picture`, `created`, `created_by`, `modified`, `modified_by`, `status`, `ordering`) VALUES
@@ -165,7 +165,7 @@ INSERT INTO `category` (`id`, `name`, `picture`, `created`, `created_by`, `modif
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categoryphone`
+-- Cấu trúc bảng cho bảng `categoryphone`
 --
 
 CREATE TABLE `categoryphone` (
@@ -182,19 +182,19 @@ CREATE TABLE `categoryphone` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `categoryphone`
+-- Đang đổ dữ liệu cho bảng `categoryphone`
 --
 
 INSERT INTO `categoryphone` (`id`, `name`, `picture`, `created`, `created_by`, `modified`, `modified_by`, `status`, `ordering`, `menu_id`) VALUES
-(1, 'Iphone', 'xun8mjy6.png', '2023-12-20', 'admin', '2024-01-05', 'admin', 1, 1, 3),
-(2, 'samsung', 'f9whz15l.jpg', '2023-12-20', 'admin', '2024-01-05', 'admin', 1, 1, 3),
-(3, 'phụ kiện Apple', 'oq5j9w6z.png', '2023-12-31', 'admin', '2024-01-05', 'admin', 1, 1, 4),
-(4, 'cong nghe', 'w56dlupj.jpg', '2024-01-05', 'admin', '2024-01-05', 'admin', 1, 2, 0);
+(1, 'Iphone', 'xun8mjy6.png', '2023-12-20', 'admin', '2024-01-07', 'admin', 1, 1, 3),
+(2, 'samsung', 'f9whz15l.jpg', '2023-12-20', 'admin', '2024-01-07', 'admin', 1, 1, 3),
+(3, 'phụ kiện Apple', 'oq5j9w6z.png', '2023-12-31', 'admin', '2024-01-07', 'admin', 1, 2, 4),
+(4, 'cong nghe', 'w56dlupj.jpg', '2024-01-05', 'admin', '2024-01-07', 'admin', 1, 3, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `contact`
+-- Cấu trúc bảng cho bảng `contact`
 --
 
 CREATE TABLE `contact` (
@@ -213,7 +213,7 @@ CREATE TABLE `contact` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `contact`
+-- Đang đổ dữ liệu cho bảng `contact`
 --
 
 INSERT INTO `contact` (`id`, `fullname`, `email`, `phone`, `title`, `content`, `created`, `created_by`, `modified`, `modified_by`, `status`, `ordering`) VALUES
@@ -232,7 +232,7 @@ INSERT INTO `contact` (`id`, `fullname`, `email`, `phone`, `title`, `content`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `experience`
+-- Cấu trúc bảng cho bảng `experience`
 --
 
 CREATE TABLE `experience` (
@@ -251,7 +251,7 @@ CREATE TABLE `experience` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `experience`
+-- Đang đổ dữ liệu cho bảng `experience`
 --
 
 INSERT INTO `experience` (`id`, `name`, `work`, `star`, `avatar`, `content`, `created`, `created_by`, `modified`, `modified_by`, `status`, `ordering`) VALUES
@@ -261,7 +261,7 @@ INSERT INTO `experience` (`id`, `name`, `work`, `star`, `avatar`, `content`, `cr
 -- --------------------------------------------------------
 
 --
--- Table structure for table `faq`
+-- Cấu trúc bảng cho bảng `faq`
 --
 
 CREATE TABLE `faq` (
@@ -277,7 +277,7 @@ CREATE TABLE `faq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `faq`
+-- Đang đổ dữ liệu cho bảng `faq`
 --
 
 INSERT INTO `faq` (`id`, `question`, `answer`, `created`, `created_by`, `modified`, `modified_by`, `status`, `ordering`) VALUES
@@ -292,7 +292,7 @@ INSERT INTO `faq` (`id`, `question`, `answer`, `created`, `created_by`, `modifie
 -- --------------------------------------------------------
 
 --
--- Table structure for table `group`
+-- Cấu trúc bảng cho bảng `group`
 --
 
 CREATE TABLE `group` (
@@ -310,7 +310,7 @@ CREATE TABLE `group` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `group`
+-- Đang đổ dữ liệu cho bảng `group`
 --
 
 INSERT INTO `group` (`id`, `name`, `group_acp`, `created`, `created_by`, `modified`, `modified_by`, `status`, `ordering`, `privilege_id`, `picture`) VALUES
@@ -321,7 +321,7 @@ INSERT INTO `group` (`id`, `name`, `group_acp`, `created`, `created_by`, `modifi
 -- --------------------------------------------------------
 
 --
--- Table structure for table `menu`
+-- Cấu trúc bảng cho bảng `menu`
 --
 
 CREATE TABLE `menu` (
@@ -336,13 +336,13 @@ CREATE TABLE `menu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `menu`
+-- Đang đổ dữ liệu cho bảng `menu`
 --
 
 INSERT INTO `menu` (`id`, `name`, `status`, `created`, `created_by`, `modified`, `modified_by`, `ordering`) VALUES
 (1, 'Trang chủ', 1, '2023-12-21', 'admin', '2023-12-21', 'admin', 2),
 (2, 'Giới thiệu', 1, '2023-12-21', 'admin', '2023-12-21', 'admin', 1),
-(3, 'Bộ sưu tập', 1, '2023-12-21', 'admin', NULL, NULL, 1),
+(3, 'Điện Thoại', 1, '2023-12-21', 'admin', NULL, NULL, 1),
 (4, 'Phụ kiện', 1, '2023-12-21', 'admin', NULL, NULL, 1),
 (5, 'Blog', 1, '2023-12-21', 'admin', NULL, NULL, 1),
 (6, 'Faq', 1, '2023-12-21', 'admin', NULL, NULL, 1),
@@ -351,7 +351,7 @@ INSERT INTO `menu` (`id`, `name`, `status`, `created`, `created_by`, `modified`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orders`
+-- Cấu trúc bảng cho bảng `orders`
 --
 
 CREATE TABLE `orders` (
@@ -368,7 +368,7 @@ CREATE TABLE `orders` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `orders`
+-- Đang đổ dữ liệu cho bảng `orders`
 --
 
 INSERT INTO `orders` (`OrderID`, `CustomerID`, `Fullname`, `Email`, `PhoneNumber`, `Address`, `Note`, `OrderDate`, `TotalAmount`, `Status`) VALUES
@@ -377,7 +377,7 @@ INSERT INTO `orders` (`OrderID`, `CustomerID`, `Fullname`, `Email`, `PhoneNumber
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order_details`
+-- Cấu trúc bảng cho bảng `order_details`
 --
 
 CREATE TABLE `order_details` (
@@ -390,7 +390,7 @@ CREATE TABLE `order_details` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `order_details`
+-- Đang đổ dữ liệu cho bảng `order_details`
 --
 
 INSERT INTO `order_details` (`ID`, `OrderID`, `ProductID`, `Price`, `Quantity`, `Subtotal`) VALUES
@@ -399,7 +399,7 @@ INSERT INTO `order_details` (`ID`, `OrderID`, `ProductID`, `Price`, `Quantity`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order_status`
+-- Cấu trúc bảng cho bảng `order_status`
 --
 
 CREATE TABLE `order_status` (
@@ -409,7 +409,7 @@ CREATE TABLE `order_status` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `order_status`
+-- Đang đổ dữ liệu cho bảng `order_status`
 --
 
 INSERT INTO `order_status` (`id`, `name`, `status`) VALUES
@@ -423,7 +423,7 @@ INSERT INTO `order_status` (`id`, `name`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `phone`
+-- Cấu trúc bảng cho bảng `phone`
 --
 
 CREATE TABLE `phone` (
@@ -444,7 +444,7 @@ CREATE TABLE `phone` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `phone`
+-- Đang đổ dữ liệu cho bảng `phone`
 --
 
 INSERT INTO `phone` (`id`, `name`, `description`, `price`, `special`, `sale_off`, `picture`, `created`, `created_by`, `modified`, `modified_by`, `status`, `ordering`, `category_phone_id`) VALUES
@@ -477,7 +477,7 @@ INSERT INTO `phone` (`id`, `name`, `description`, `price`, `special`, `sale_off`
 (27, 'Củ sạc Apple Power Adapter 140W Type-C', 'Được sản xuất chính hãng bởi Apple, bộ sạc 140W USB-C Power Adapter ghi nhận khả năng sạc nhanh cho MacBook Pro 16 inch (2021) và nhiều sản phẩm nằm trong hệ sinh thái của Táo khuyết. Nhờ công nghệ điều tiết dòng điện thông minh, thiết bị này sẽ giúp bạn ', '3990000', NULL, 2990000, 'a853n2jl.jpg', '2023-12-31', 'admin', NULL, NULL, 1, 1, 3),
 (28, 'Chuột Magic Mouse 2 2021', 'Bạn sẽ khó lòng tìm được sản phẩm chuột không dây nào có thiết kế tinh tế và thời trang hơn Magic Mouse 2 2021 trên thị trường. Sản phẩm sở hữu kiểu dáng đầy phong cách với bề mặt Multi-Touch cảm ứng, hỗ trợ thực hiện thao tác cử chỉ nhẹ nhàng. Với thời l', '2990000', NULL, 1990000, 'lscmhwg8.jpg', '2023-12-31', 'admin', NULL, NULL, 1, 1, 3),
 (29, 'Dây Đeo AirTag Leather Key Ring', 'Dây đeo Leather Key Ring chính hãng Apple sẽ giúp bạn dễ dàng treo AirTag lên các vật dụng mình muốn để định vị khi cần. Đây là giải pháp chứa đựng và hỗ trợ sử dụng AirTag từ chính đội ngũ Apple, đồng thời cũng là cách để bạn biến thiết bị định vị của mì', '990000', NULL, 790000, '8has2xwn.jpg', '2023-12-31', 'admin', NULL, NULL, 1, 1, 3),
-(30, 'Tai nghe AirPods Max', 'Là chiếc AirPods đầu tiên trong lịch sử Apple đi theo phong cách thiết kế over-ear chuyên dụng, AirPods Max đem tới sự cân bằng hoàn hảo giữa trải nghiệm âm thanh trung thực và tính tiện dụng đặc trưng của dòng tai nghe đến từ Táo khuyết.', '12990000', NULL, 11990000, '3huep6gj.png', '2023-12-31', 'admin', NULL, NULL, 1, 1, 3),
+(30, 'Tai nghe AirPods Max', 'Là chiếc AirPods đầu tiên trong lịch sử Apple đi theo phong cách thiết kế over-ear chuyên dụng, AirPods Max đem tới sự cân bằng hoàn hảo giữa trải nghiệm âm thanh trung thực và tính tiện dụng đặc trưng của dòng tai nghe đến từ Táo khuyết.', '12990000', NULL, 11990000, 'f71jdc6g.png', '2023-12-31', 'admin', '2024-01-08', 'admin', 1, 1, 3),
 (31, 'Bao da iPad 10.2 & Air 3 10.5 inch Apple', 'Apple Smart Cover Cactus là bao da thông minh dành cho iPad 10.2 với màu xanh Cactus độc đáo, thiết kế mỏng nhẹ, khả năng bảo vệ hoàn hảo, tự động tắt/mở máy và dựng iPad với nhiều tư thế. Sản phẩm chính hãng từ Apple mang đến chất lượng và sự yên tâm tro', '1990000', NULL, 990000, 'vz24dphi.png', '2023-12-31', 'admin', NULL, NULL, 1, 1, 3),
 (32, 'Vỏ Bút cảm ứng Apple Pencil Case', 'Ngoài phần vỏ da bọc lấy Apple Pencil phòng tránh hư hại, bộ Case Saddle Brown này còn có thêm một phần viền da bên ngoài tạo thành điểm tì trên mặt phẳng, tránh cho chiếc bút bị lăn đi khi đặt trên mặt bàn, từ đó hạn chế những trường hợp thất lạc ngoài ý', '690000', NULL, 590000, 'ln18rz94.jpg', '2023-12-31', 'admin', '2023-12-31', 'admin', 1, 1, 3),
 (33, 'Dây đeo Apple Watch 44mm nylon Khaki', 'Sản phẩm chỉ là dây đeo bạn nha, không phải đồng hồ ạ. Thông tin của dây đã có trong mục thông số kỹ thuật trên web bạn nhé. Để được hỗ trợ chi tiết thêm bạn vui lòng để lại thông tin liên hệ (Tên, số điện thoại), bên mình sẽ chủ động liên hệ hỗ trợ cho b', '990000', NULL, 590000, '0geyx1w8.jpg', '2023-12-31', 'admin', NULL, NULL, 1, 1, 3),
@@ -491,7 +491,7 @@ INSERT INTO `phone` (`id`, `name`, `description`, `price`, `special`, `sale_off`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `privilege`
+-- Cấu trúc bảng cho bảng `privilege`
 --
 
 CREATE TABLE `privilege` (
@@ -503,7 +503,7 @@ CREATE TABLE `privilege` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `privilege`
+-- Đang đổ dữ liệu cho bảng `privilege`
 --
 
 INSERT INTO `privilege` (`id`, `name`, `module`, `controller`, `action`) VALUES
@@ -521,7 +521,7 @@ INSERT INTO `privilege` (`id`, `name`, `module`, `controller`, `action`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rss`
+-- Cấu trúc bảng cho bảng `rss`
 --
 
 CREATE TABLE `rss` (
@@ -532,7 +532,7 @@ CREATE TABLE `rss` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `rss`
+-- Đang đổ dữ liệu cho bảng `rss`
 --
 
 INSERT INTO `rss` (`id`, `link`, `status`, `ordering`) VALUES
@@ -546,7 +546,7 @@ INSERT INTO `rss` (`id`, `link`, `status`, `ordering`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `slider`
+-- Cấu trúc bảng cho bảng `slider`
 --
 
 CREATE TABLE `slider` (
@@ -565,7 +565,7 @@ CREATE TABLE `slider` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `slider`
+-- Đang đổ dữ liệu cho bảng `slider`
 --
 
 INSERT INTO `slider` (`id`, `name`, `description`, `picture`, `created`, `created_by`, `modified`, `modified_by`, `ordering`, `status`, `category_phone_id`, `class`) VALUES
@@ -575,7 +575,7 @@ INSERT INTO `slider` (`id`, `name`, `description`, `picture`, `created`, `create
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Cấu trúc bảng cho bảng `user`
 --
 
 CREATE TABLE `user` (
@@ -596,7 +596,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `user`
+-- Đang đổ dữ liệu cho bảng `user`
 --
 
 INSERT INTO `user` (`id`, `username`, `email`, `fullname`, `password`, `created`, `created_by`, `modified`, `modified_by`, `register_date`, `register_ip`, `status`, `ordering`, `group_id`) VALUES
@@ -612,207 +612,207 @@ INSERT INTO `user` (`id`, `username`, `email`, `fullname`, `password`, `created`
 (10, 'admin01', 'admin01@gmail.com', 'Admin 123', 'e5c0fe73b84c06f43393b87a9c6acaa1', '0000-00-00', NULL, '2023-11-23', 'admin', '2013-12-03 08:12:23', '127.0.0.1', 1, 10, 2);
 
 --
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `blog`
+-- Chỉ mục cho bảng `blog`
 --
 ALTER TABLE `blog`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `book`
+-- Chỉ mục cho bảng `book`
 --
 ALTER TABLE `book`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `cart`
+-- Chỉ mục cho bảng `cart`
 --
 ALTER TABLE `cart`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `category`
+-- Chỉ mục cho bảng `category`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `categoryphone`
+-- Chỉ mục cho bảng `categoryphone`
 --
 ALTER TABLE `categoryphone`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `contact`
+-- Chỉ mục cho bảng `contact`
 --
 ALTER TABLE `contact`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `faq`
+-- Chỉ mục cho bảng `faq`
 --
 ALTER TABLE `faq`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `group`
+-- Chỉ mục cho bảng `group`
 --
 ALTER TABLE `group`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `menu`
+-- Chỉ mục cho bảng `menu`
 --
 ALTER TABLE `menu`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `orders`
+-- Chỉ mục cho bảng `orders`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`OrderID`);
 
 --
--- Indexes for table `order_details`
+-- Chỉ mục cho bảng `order_details`
 --
 ALTER TABLE `order_details`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `order_status`
+-- Chỉ mục cho bảng `order_status`
 --
 ALTER TABLE `order_status`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `phone`
+-- Chỉ mục cho bảng `phone`
 --
 ALTER TABLE `phone`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `privilege`
+-- Chỉ mục cho bảng `privilege`
 --
 ALTER TABLE `privilege`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `rss`
+-- Chỉ mục cho bảng `rss`
 --
 ALTER TABLE `rss`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `slider`
+-- Chỉ mục cho bảng `slider`
 --
 ALTER TABLE `slider`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user`
+-- Chỉ mục cho bảng `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `blog`
+-- AUTO_INCREMENT cho bảng `blog`
 --
 ALTER TABLE `blog`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `book`
+-- AUTO_INCREMENT cho bảng `book`
 --
 ALTER TABLE `book`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
--- AUTO_INCREMENT for table `category`
+-- AUTO_INCREMENT cho bảng `category`
 --
 ALTER TABLE `category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `categoryphone`
+-- AUTO_INCREMENT cho bảng `categoryphone`
 --
 ALTER TABLE `categoryphone`
   MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `contact`
+-- AUTO_INCREMENT cho bảng `contact`
 --
 ALTER TABLE `contact`
   MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT for table `faq`
+-- AUTO_INCREMENT cho bảng `faq`
 --
 ALTER TABLE `faq`
   MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
--- AUTO_INCREMENT for table `group`
+-- AUTO_INCREMENT cho bảng `group`
 --
 ALTER TABLE `group`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `menu`
+-- AUTO_INCREMENT cho bảng `menu`
 --
 ALTER TABLE `menu`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `orders`
+-- AUTO_INCREMENT cho bảng `orders`
 --
 ALTER TABLE `orders`
   MODIFY `OrderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT for table `order_details`
+-- AUTO_INCREMENT cho bảng `order_details`
 --
 ALTER TABLE `order_details`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT for table `order_status`
+-- AUTO_INCREMENT cho bảng `order_status`
 --
 ALTER TABLE `order_status`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `phone`
+-- AUTO_INCREMENT cho bảng `phone`
 --
 ALTER TABLE `phone`
   MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
--- AUTO_INCREMENT for table `privilege`
+-- AUTO_INCREMENT cho bảng `privilege`
 --
 ALTER TABLE `privilege`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT for table `rss`
+-- AUTO_INCREMENT cho bảng `rss`
 --
 ALTER TABLE `rss`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- AUTO_INCREMENT for table `slider`
+-- AUTO_INCREMENT cho bảng `slider`
 --
 ALTER TABLE `slider`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT cho bảng `user`
 --
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;

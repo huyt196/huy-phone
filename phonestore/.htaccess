@@ -24,6 +24,8 @@ RewriteRule     search.html         index.php?module=phone&controller=phone&acti
 RewriteRule		([A-Za-z0-9_-]+)-([0-9]+)\.html 		index.php?module=phone&controller=phone&action=list&category_phone_id=$2
 
 RewriteRule		([A-Za-z0-9_-]+)/([A-Za-z0-9_-]+)-([0-9]+)-([0-9]+)\.html 		index.php?module=phone&controller=phone&action=detail&category_phone_id=$3&phone_id=$4
+
 RewriteRule		detail-phone-([0-9]+)\.html 	                                index.php?module=phone&controller=phone&action=detail&phone_id=$1
 RewriteRule     detail-phone/quick-view-([0-9]+)\.html                        index.php?module=shop&controller=phone&action=quickView&phone_id=$4
 RewriteRule		list-phone-([0-9]+)\.html 	        index.php?module=phone&controller=phone&action=list&category_phone_id=$1
+RewriteRule	    blog-detail/cate-([0-9]+)/([0-9]+).html    index.php?module=phone&controller=article&action=detail&category_phone_id=$1&blog_id=$2

@@ -10,7 +10,7 @@
 			$price = number_format($value['price']);
 			$phoneNameURL	= URL::filterURL($name);
 			$catNameURL		= URL::filterURL( $value['category_name']);
-				
+            $linkzoom	= URL::createLink('phone', 'phone', 'quickView', array('phone_id' => $value['id']));
 			$link	= URL::createLink('phone', 'phone', 'detail', array('category_phone_id' => $value['category_phone_id'],'phone_id' => $value['id']), "$catNameURL/$phoneNameURL-$catID-$phoneID.html");
 			
 			$picture 		= Helper::createImage('phone', '', $value['picture']);
@@ -22,9 +22,9 @@
 					</a>
 					<div class="product_action_box">
 						<ul class="list_none pr_action_btn">
-							<li class="add-to-cart"><a href="'.	$link .'"><i class="icon-basket-loaded"></i> Chọn mua</a></li>
-							<li><a href="shop-quick-view.php" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
-							<li><a href="#"><i class="icon-heart"></i></a></li>
+							<li class="add-to-cart"><a href="#" onclick="addCart('. $phoneID .', 1)" ><i class="icon-basket-loaded"></i> Chọn mua</a></li>
+							<li><a href="'.$linkzoom.'" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
+							
 						</ul>
 					</div>
 				</div>
@@ -49,6 +49,7 @@
 
 
 <?php 
+
 	$phoneInfo	= $this->phoneInfo;
     $id = $phoneInfo['id']; 
     $categoryName = $this->phoneInfo['category_name'];
@@ -252,8 +253,7 @@
                     <div class="sidebar">
 					<?php include_once BLOCK_PATH . 'sidebar-categories.php';?>
                         <?php include_once TEMPLATE_PATH . 'phone/main/widgets/sidebar-filter.php';?>
-
-                        <?php include_once TEMPLATE_PATH . 'phone/main/widgets/sidebar-banner.php';?>
+                        <?php include_once BLOCK_PATH . 'sidebar-banner.php'; ?>
                     </div>
                 </div>
             </div>

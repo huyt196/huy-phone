@@ -1,7 +1,7 @@
 <?php
 
 	$model 	= new Model();
-	$query	="SELECT `id`, `name`, `picture` FROM `".TBL_CATEGORYPHONE."` WHERE `id`  > 2 ORDER BY `name` ASC";
+	$query	="SELECT `id`, `name`, `picture` FROM `".TBL_CATEGORYPHONE."` WHERE `id`  = 3 ORDER BY `name` ASC";
 
 		$data	= $model->fetchAll($query);
 

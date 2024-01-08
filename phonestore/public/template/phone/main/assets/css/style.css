@@ -1523,18 +1523,32 @@ button:focus {
 	position: static;
 }
 .navbar .navbar-nav li.dropdown-mega-menu .dropdown-menu {
-	margin-left: 6%;
+
 	width: 15%;
 	right: 0;
 	padding-left: 0;
 	padding-right: 0;
 }
+.navbar .navbar-nav li.dropdown-mega-menu .menu-dropdown-1{
+margin-left: -26px;
+}
+.navbar .navbar-nav li.dropdown-mega-menu .menu-dropdown-2{
+	margin-left: -11px;
+	}
 .menu-dropdown-1{
+	margin-left: 20px;
 	width: 25%;
 	left: 50%;
 	transform: translateX(50%);
 	top: 98%;
 }
+.menu-dropdown-2{
+	width: 25%;
+    left: 50%;
+    transform: translateX(90%);
+    top: 98%;
+}
+
 .mega-menu-col {
 	border-right: 1px solid #ddd;
 	padding: 0;

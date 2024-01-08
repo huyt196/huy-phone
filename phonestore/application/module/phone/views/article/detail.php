@@ -1,16 +1,61 @@
  
+ <?php
+	$xhtmlRelateBlog = '';
+
+	if(!empty($this->blogRelate)){
+		foreach($this->blogRelate as $key => $value){
+			$name	= $value['name'];
+			$blogID			= $value['id'];
+            $date = strval($value['created']);
+            $time = date('H:i:s');
+			$catID			= $value['category_phone_id'];
+            $description = $value['description'];
+			$phoneNameURL	= URL::filterURL($name);
+			$catNameURL		= URL::filterURL( $value['category_name']);
+            $link_blog = "blog-detail/cate-$catID/$blogID.html";
+			$picture 		= Helper::createImage('blog', '', $value['picture']);
+			$xhtmlRelateBlog 	.= '<div class="col-md-6">
+            <div class="blog_post blog_style2 box_shadow1">
+                <div class="blog_img">
+                    <a href="'.$link_blog .'">
+                     '.$picture .'
+                    </a>
+                </div>
+                <div class="blog_content bg-white">
+                    <div class="blog_text">
+                        <h5 class="blog_title"><a href="'.$link_blog .'">'.$name.'</a></h5>
+                        <ul class="list_none blog_meta">
+                            <li><a href="#"><i class="ti-calendar"></i> '.$date.', '.$time.'</a></li>
+                            <!-- <li><a href="#"><i class="ti-comments"></i> 2 Comment</a></li> -->
+                        </ul>
+                        <p> '.$description.'</p>
+                    </div>
+                </div>
+            </div>
+        </div>';
+		}
+	}
+	;
+?>
+
+ 
+ 
  <?php 
-	$blogInfo	= $this->phoneInfo;
+ 
+	$blogInfo	= $this->blogInfo;
+  
     $id = $blogInfo['id']; 
-    $categoryName = $this->phoneInfo['category_name'];
-    $categoryID = $this->phoneInfo['category_phone_id'];
+    $categoryName = $this->blogInfo['category_name'];
+    $categoryID = $this->blogInfo['category_phone_id'];
 	$name		= $blogInfo['name'];
 	$uploadFolder ='blog';
 	$sourcePicture = $blogInfo['picture'];
     $uploadFolder ='blog';
+    $date = strval($blogInfo['created']);
+    $time = date('H:i:s');
 	$file_product = UPLOAD_URL . $uploadFolder . '/' . $sourcePicture;
     $picture_zoom = '<img id="product_img" src="' . $file_product . '" data-zoom-image="'  . $file_product . ' alt="'.$name.'"">';
-	$picture 		= Helper::createImage('phone', '', $blogInfo['picture']);
+	$picture 		= Helper::createImage('blog', '', $blogInfo['picture']);
     $picture1 = $blogInfo['picture'];
 	$picturePath	= UPLOAD_PATH . 'blog' . DS . '' . $blogInfo['picture'];
 	$pictureFull	= '';
@@ -18,9 +63,7 @@
 		$pictureFull	= UPLOAD_URL . 'blog' . DS . $blogInfo['picture'];
 	}
 	$description	= $blogInfo['description'];
-	echo '<pre style="color:red">';
-    print_r($blogInfo);
-    echo '</pre>';
+
     $linkRelatePhone	= URL::createLink('phone', 'phone', 'relate', array('blog_id' => $blogInfo['id'], 'category_phone_id' => $blogInfo['category_phone_id']));
 ?>
  
@@ -31,23 +74,16 @@
             <div class="row">
                 <div class="col-xl-9">
                     <div class="single_post">
-                        <h2 class="blog_title">Sợi Bamboo là gì? Tại sao Áo Sơ Mi sợi Bamboo lại được ưa chuộng như vậy</h2>
+                        <h2 class="blog_title"><?php echo $name  ?></h2>
                         <ul class="list_none blog_meta">
-                            <li><a href="#"><i class="ti-calendar"></i>16-06-2020, 12:26 pm</a></li>
+                            <li><a href="#"><i class="ti-calendar"></i><?php echo $date ;echo " "; echo $time   ?></a></li>
                         </ul>
                         <div class="blog_img">
-                            <img src="../assets/images/article.gif" alt="blog_img1">
+                         <?php  echo 	$picture    ?>
                         </div>
                         <div class="blog_content">
                             <div class="blog_text">
-                                <p>Sợi bamboo hay còn gọi là sợi tre,có thành phần chủ yếu từ cây tre, tre được biết đến là loại cây dễ trồng, sinh trưởng nhanh, đặc biệt không cần phun thuốc hoá học khi trồng nên khi được sử dụng làm sợi thì loại sợi này được coi là sợi tương đối an toàn!</p>
-                                <p>Ưu điểm của sợi tre :</P>
-                                <p>-Sợi bamboo mềm, kháng khuẩn tốt, độ hút ẩm cao, có cảm giác mịn và mát -Loại sợi này khi được sử dụng trong sản xuất quần áo và sản xuất tất thì có độ bền màu cao, mềm mại, bề mặt luôn bóng mịn, không bị nhăn,& bền màu khi giặt .</p>
-                                <p>Nhược điểm của sợi tre:</p>
-                                <p>-Vì loại sợi này có chất lương cao , có nhiều ưu điểm nên giá thành của loại sợi này vẫn rất cao</p>
-                                <p>-Hút nước tốt là ưu điểm và cũng là nhược điểm của loại sợi này, sản phẩm được làm từ loại sợi này sẽ khó khô hơn một chút so với các loại sợi khác vào mùa đông</p>
-                                <p>Ứng dụng của sợi bamboo: :</P>
-                                <p>-Được ứng dụng trong ngành sản xuất quần áo ngành may mặc, và sản xuất khăn mặt, bít tất, vớ…</p>
+                               <p><?php echo $description ?></p>
                                 <div class="blog_post_footer">
                                     <div class="row justify-content-between align-items-center">
                                         <div class="col-md-8 mb-3 mb-md-0">
@@ -72,9 +108,7 @@
                         </div>
                         <div class="row">
                             <?php
-                                for($i=0;$i<2;$i++){
-                                    include_once TEMPLATE_PATH . 'phone/main/element/item-releted-posts.php';
-                                }
+                             echo $xhtmlRelateBlog;
                                 ?>
                         </div>
                     </div>

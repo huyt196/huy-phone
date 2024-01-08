@@ -13,6 +13,23 @@ class ArticleModel extends Model{
 	}
 	
 	public function listItem($arrParam, $option = null){
+
+		if ($option['task'] == 'blog-relate') {
+			$blogID = $arrParam['blog_id'];
+			$catID = $arrParam['category_phone_id'];
+
+			$query[] = "SELECT `b`.`id`, `b`.`name`,`b`.`created`, `b`.`picture`, `b`.`category_phone_id`, `c`.`name` AS `category_name`";
+			$query[] = "FROM `" . TBL_BLOG . "` AS `b`, `" . TBL_CATEGORYPHONE . "` AS `c`";
+			$query[] = "WHERE `b`.`status`  = 1  AND `c`.`id` = `b`.`category_phone_id` AND `b`.`id` <> '$blogID' AND `c`.`id`  = '$catID'";
+			$query[] = "ORDER BY `b`.`ordering` ASC LIMIT 2";
+
+			$query = implode(" ", $query);
+			$result = $this->fetchAll($query);
+			return $result;
+		}
+
+
+
 		if($option['task'] == 'blog-in-cat'){
 		
 			$query[]	= "SELECT `id`, `name`, `picture`, `description`,`created`,`category_phone_id`";
@@ -49,10 +66,10 @@ class ArticleModel extends Model{
 		}
 
 		if ($option['task'] == 'blog-info') {
-			$query = "SELECT `b`.`id`, `b`.`name`, ,`b`.`created`,`c`.`name` AS `category_name`,  `b`.`picture`, `b`.`description`, `b`.`category_phone_id` FROM `" . TBL_BLOG . "` AS `b`, `" . TBL_CATEGORYPHONE . "` AS `c` WHERE `b`.`id` = '" . $arrParam['blog_id'] . "' AND `c`.`id` = `b`.`category_phone_id`";
-
+			$query = "SELECT `b`.`id`, `b`.`name`, `b`.`created`,`c`.`name` AS `category_name`,  `b`.`picture`, `b`.`description`, `b`.`category_phone_id` FROM `" . TBL_BLOG . "` AS `b`, `" . TBL_CATEGORYPHONE . "` AS `c` WHERE `b`.`id` = '" . $arrParam['blog_id'] . "' AND `c`.`id` = `b`.`category_phone_id`";
+		
 			$result = $this->fetchRow($query);
-
+			
 			return $result;
 		}
 	}

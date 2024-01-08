@@ -4,6 +4,8 @@ $Items = $_SESSION['cart'];
 $xhtmlCartItems = '';
 if (!empty($Items)) {
 	foreach ($Items as $Item) {
+
+		
 		$query = "SELECT `name` FROM `" . TBL_CATEGORYPHONE . "` WHERE `id` = '" . $Item['category_phone_id'] . "'";
 		$data	= $model->fetchAll($query);
 		$namelink = implode("", $data['0']);

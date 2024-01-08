@@ -3,13 +3,7 @@
 	$model 	= new Model();
 	$query	="SELECT `id`, `name`, `picture` FROM `".TBL_CATEGORYPHONE."` WHERE `status`  = 1 ORDER BY `id` ASC";
     $data	= $model->fetchAll($query);
-    $categorysamsungName    = $data[1]['name'];
-    $categorysamsungID    = $data[1]['id'];
-    $categoryiphoneName    = $data[0]['name'];
-    $categoryiphoneID    = $data[0]['id'];
-    $categorypkiphoneName    = $data[2]['name'];
-    $categorypkiphoneID    = $data[2]['id'];
-
+   
 
 
     $link	 		= URL::createLink('phone', 'phone', 'list', array('category_id' => $id), "$nameURL-$id.html");
@@ -39,7 +33,9 @@
                             <a class="nav-link nav_item <?php if ($this->menu_active == "about"){echo "active";}?>" href="<?php echo $linkAbout  ?>">Giới thiệu</a>
                         </li>
                         <li class="dropdown dropdown-mega-menu">
-                            <a class="dropdown-toggle nav-link <?php if ($this->menu_active == "list"){echo "active";}?>" href="#" data-toggle="dropdown">Điện Thoại</a>
+                            <a class="dropdown-toggle nav-link      
+                             <?php if ($this->menu_active == "list" &&  $this->Items['0']['category_phone_id'] <= 2){echo "active";}
+                              elseif( $this->phoneInfo['category_phone_id'] <= 2 && !empty($this->phoneRelate)){echo "active";} else{ }?>" href="#" data-toggle="dropdown">Điện Thoại</a>
                             <div class="dropdown-menu menu-dropdown-1">
                                 <ul class="mega-menu d-lg-flex">
                                     <li class="mega-menu-col col-lg-3">
@@ -84,16 +80,17 @@
                                 </div> -->
                             </div>
                         </li>
-                        <!-- <li class="dropdown dropdown-mega-menu">
-                            <a  class="dropdown-toggle nav-link <?php if ($this->menu_active == "listpk"){echo "active";}?>" href="#" data-toggle="dropdown">Phụ kiện</a>
-                            <div class="dropdown-menu">
+                        <li class="dropdown dropdown-mega-menu">
+                            <a  class="dropdown-toggle nav-link <?php if ($this->menu_active == "list" &&  $this->Items['0']['category_phone_id'] >= 3){echo "active";}
+                              elseif( $this->phoneInfo['category_phone_id'] >= 3 && !empty($this->phoneRelate)){echo "active";} else{ }?>" href="#" data-toggle="dropdown">Phụ kiện</a>
+                            <div class="dropdown-menu menu-dropdown-2">
                                 <ul class="mega-menu d-lg-flex">
                                     <li class="mega-menu-col col-lg-12">
                                         <ul class="d-lg-flex">
                                             <li class="mega-menu-col col-lg-3">
                                       
                                                 <ul>
-                                                    <li class="dropdown-header">Các loại Phụ kiện</li>
+                                         
                                                     <?php include_once BLOCK_PATH . 'categoryphone2.php';?>
                 
                                                 </ul>
@@ -103,25 +100,10 @@
                                           
                                         </ul>
                                     </li>
-                                    <li class="mega-menu-col col-lg-3">
-                                        <div class="header_banner">
-                                            <div class="header_banner_content">
-                                                <div class="shop_banner">
-                                                    <div class="banner_img overlay_bg_40">
-                                                        <img src="<?=TEMPLATE_URL?>phone/main/assets/images/phukien.jpg" alt="shop_banner"/>
-                                                    </div>
-                                                    <div class="shop_bn_content">
-                                                        <h5 class="text-uppercase shop_subtitle">Bộ sưu tập mới</h5>
-                                                        <h3 class="text-uppercase shop_title">Giảm tới 30%</h3>
-                                                        <a href="#" class="btn btn-white rounded-0 btn-sm text-uppercase">Xem ngay</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
+                               
                                 </ul>
                             </div>
-                        </li> -->
+                        </li>
                         <li>
                             <a class="nav-link nav_item <?php if ($this->menu_active == "blog"){echo "active";}?>" href="blog.html">Blog</a>
                         </li>

@@ -1,3 +1,11 @@
+
+<style>
+.faqclass p {
+  text-align: left;
+}
+
+</style>
+
 <?php
 $xhtml = '';
 if(!empty($this->Items)){
@@ -8,7 +16,7 @@ foreach($this->Items as $key => $value){
     <div class="faq-question">'.$question.'</div>
     <div class="icon-container"><i class="fas fa-chevron-right"></i></div>
 </div>
-<div class="faq-answer">
+<div class="faq-answer faqclass">
     <p>'.$answer.'</p>
 </div>';
 }

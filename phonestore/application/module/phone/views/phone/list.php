@@ -12,7 +12,7 @@ $selectboxSort = HelperFrontend::cmsSelectbox('filter_order', 'form-control form
 
 // SELECT BOX SHOWING NUMBER ITEM
 $arrayShowingNumberItem = [
-    'default' => 'Showing',
+    'default' => 'Hiển thị',
     '6' => 6,
     '9' => 9,
     '12' => 12,
@@ -52,7 +52,7 @@ if (!empty($this->Items)) {
 						<ul class="list_none pr_action_btn">
 							<li class="add-to-cart"><a href="#" onclick="addCart('. $phoneID .', 1)" ><i class="icon-basket-loaded"></i> Chọn Mua</a></li>
 							<li><a href="'.$linkzoom.'" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
-							<li><a href="#"><i class="icon-heart"></i></a></li>
+					
 						</ul>
 					</div>
 				</div>
@@ -148,7 +148,7 @@ if (!empty($this->Items)) {
                     <?php include_once TEMPLATE_PATH . 'phone/main/widgets/sidebar-filter.php'; ?>
 
 
-                    <?php include_once TEMPLATE_PATH . 'phone/main/widgets/sidebar-banner.php'; ?>
+                    <?php include_once BLOCK_PATH . 'sidebar-banner.php'; ?>
                 </div>
             </div>
         </div>

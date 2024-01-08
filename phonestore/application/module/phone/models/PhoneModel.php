@@ -55,6 +55,7 @@ class PhoneModel extends Model
 
 	public function listItem($arrParam, $option = null)
 	{
+
 		if ($option['task'] == 'phone-in-cat') {
 			$catID = $arrParam['category_phone_id'];
 			$query[] = "SELECT `id`, `name`, `picture`, `description`, `category_phone_id`,`price` ,`sale_off`";
@@ -139,11 +140,32 @@ class PhoneModel extends Model
 
 	public function infoItem($arrParam, $option = null)
 	{
+		if ($option['task'] == 'get-menu-name') {
+
+			$query = "SELECT `m`.`name` ";
+			$query .= " FROM `" . TBL_MENU . "` AS `m`";
+			$query .= " WHERE `m`.`id` = (";
+
+			$query .= "SELECT `c`.`menu_id` ";
+			$query .= " FROM `" . TBL_CATEGORYPHONE . "` AS `c`, `" . TBL_PHONE . "` AS `p`";
+			$query .= " WHERE `c`.`id` = `p`.`category_phone_id`";
+			$query .= " AND `p`.`id` = '" . $arrParam['phone-id'] . "')";
+			echo '<pre style="color:red">';
+			print_r($query);
+			echo '</pre>';
+			$result = $this->fetchRow($query);
+			return $result['name'];
+		}
+
+
+
 		if ($option['task'] == 'get-cat-name') {
 			$query = "SELECT `name` FROM `" . TBL_CATEGORYPHONE . "` WHERE `id` = '" . $arrParam['category_phone_id'] . "'";
 			$result = $this->fetchRow($query);
 			return $result['name'];
 		}
+
+	
 
 		if ($option['task'] == 'phone-info') {
 			$query = "SELECT `b`.`id`, `b`.`name`, `c`.`name` AS `category_name`, `b`.`price`, `b`.`sale_off`, `b`.`picture`, `b`.`description`, `b`.`category_phone_id` FROM `" . TBL_PHONE . "` AS `b`, `" . TBL_CATEGORYPHONE . "` AS `c` WHERE `b`.`id` = '" . $arrParam['phone_id'] . "' AND `c`.`id` = `b`.`category_phone_id`";

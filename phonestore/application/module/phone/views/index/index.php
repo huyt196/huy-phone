@@ -34,7 +34,7 @@ foreach($this->specialPhone as $key => $value){
                 <ul class="list_none pr_action_btn">
                     <li class="add-to-cart"><a href="#"  onclick="addCart('. $phoneID.', 1)" ><i class="icon-basket-loaded"></i> Chọn mua</a></li>
                     <li><a href="'.$linkzoom.'" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
-                    <li><a href="#"><i class="icon-heart"></i></a></li>
+              
                 </ul>
             </div>
         </div>
@@ -86,7 +86,7 @@ foreach($this->newPhone as $key => $value){
                 <ul class="list_none pr_action_btn">
                     <li class="add-to-cart"><a href="#" onclick="addCart('. $phoneID.', 1)" ><i class="icon-basket-loaded"></i>Chọn mua</a></li>
                     <li><a href="'.$linkzoom.'" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
-                    <li><a href="#"><i class="icon-heart"></i></a></li>
+ 
                 </ul>
             </div>
         </div>
@@ -141,7 +141,7 @@ foreach($this->specialPhone as $key => $value){
                 <ul class="list_none pr_action_btn">
                     <li class="add-to-cart"><a href="#" onclick="addCart('. $phoneID.', 1)" ><i class="icon-basket-loaded"></i>Chọn mua</a></li>
                     <li><a href="'.$linkzoom.'" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
-                    <li><a href="#"><i class="icon-heart"></i></a></li>
+                  
                 </ul>
             </div>
         </div>
